@@ -1,0 +1,182 @@
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\GenerateResource.read.1.tlog
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\GenerateResource.write.1.tlog
+K:\新建文件夹 (2)\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+K:\新建文件夹 (2)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+K:\新建文件夹 (2)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\Gimela.Common.ExceptionHandling.dll
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\Gimela.Common.Logging.dll
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\Gimela.Net.Sockets.dll
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\Gimela.Net.Sockets.pdb
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\Gimela.Net.Sockets.xml
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\ResolveAssemblyReference.cache
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\GenerateResource.read.1.tlog
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\GenerateResource.write.1.tlog
+F:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\bin\Debug\Gimela.Net.Sockets.pdb
+G:\工程项目\机器人项目\TcpServcerTest\TcpServcerTest\bin\Debug\Gimela.Net.Sockets.xml
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+C:\Documents and Settings\Administrator\桌面\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+K:\新建文件夹 (3)\TcpServcerTest\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-协议修改版\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+G:\工程项目\机器人项目\控制器通讯\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
+E:\项目资料\研发\项目资料\拉力机\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\项目资料\研发\项目资料\拉力机\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\项目资料\研发\项目资料\拉力机\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+D:\TcpServcerTest-先夹取后松开\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.Data.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.Utils.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.XtraEditors.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.XtraGrid.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.XtraLayout.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.Data.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.Utils.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.XtraEditors.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.XtraGrid.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\DevExpress.XtraLayout.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+E:\TcpServcerTest-先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+E:\TcpServcerTest先夹取后松开20180309\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\TcpServcerTest先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\TcpServcerTest先夹取后松开20180309\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.Data.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.Utils.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.XtraEditors.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.XtraGrid.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.XtraLayout.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.Data.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.Utils.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.XtraEditors.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.XtraGrid.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\bin\Debug\DevExpress.XtraLayout.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.Form1.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\TcpServcerTest先夹取后松开201803013\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+E:\项目资料\研发\技术文档\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\项目资料\研发\技术文档\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.FrmMain.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.Properties.Resources.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.csproj.GenerateResource.Cache
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.exe.licenses
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\TcpServcerTest.exe
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.Data.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.Utils.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraEditors.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraGrid.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraLayout.v10.2.dll
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.Data.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.Utils.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraEditors.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraGrid.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraLayout.v10.2.xml
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.FrmManualMode.resources
