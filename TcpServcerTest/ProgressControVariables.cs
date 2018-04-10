@@ -50,7 +50,10 @@ namespace TcpServcerTest
             dic.TryAdd("U型架下降到位", false);
             dic.TryAdd("试验数据保存完成", false);
             //复位命令状态
-            dic.TryAdd("满足复位条件", false);
+            dic.TryAdd("满足急停复位", false);
+            dic.TryAdd("有急停信号", false);
+            dic.TryAdd("暂停命令", false);
+            dic.TryAdd("满足暂停复位", false);
             return dic;
             }
         }
