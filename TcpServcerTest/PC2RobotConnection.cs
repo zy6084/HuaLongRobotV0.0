@@ -64,7 +64,31 @@ namespace TcpServcerTest
                     case "JQ2":
                         sendStb.Append("jq2");
                         break;
-                }
+                    case "M1":
+                        sendStb.Append("m1");
+                        break;
+                    case "M2":
+                        sendStb.Append("m2");
+                        break;
+                    case "M3":
+                        sendStb.Append("m3");
+                        break;
+                    case "PS":
+                        sendStb.Append("ps");
+                        break;
+                    case "PR":
+                        sendStb.Append("pr");
+                        break;
+                    case "ES":
+                        sendStb.Append("es");
+                        break;
+                    case "ER":
+                        sendStb.Append("er");
+                        break;
+                    case "Manual":
+                        sendStb.Append("manual");
+                        break;
+                    }
                 return sendStb.ToString();
             }
             catch (Exception ex) { throw new Exception(ex.Message); }
@@ -111,6 +135,21 @@ namespace TcpServcerTest
                         break;
                     case "dw2":
                         rct = Params.Robot2PCCommandType.DW2;
+                        break;
+                    case "PSF":
+                        rct = Params.Robot2PCCommandType.PSF;
+                        break;
+                    case "PRF":
+                        rct = Params.Robot2PCCommandType.PRF;
+                        break;
+                    case "ESF":
+                        rct = Params.Robot2PCCommandType.ESF;
+                        break;
+                    case "ERF":
+                        rct = Params.Robot2PCCommandType.ERF;
+                        break;
+                    case "ManualFeedBack":
+                        rct = Params.Robot2PCCommandType.ManualFeedBack;
                         break;
                     default:
                         rct = Params.Robot2PCCommandType.Error;

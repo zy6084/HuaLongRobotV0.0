@@ -178,5 +178,8 @@ E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaL
 E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraGrid.v10.2.xml
 E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\DevExpress.XtraLayout.v10.2.xml
 E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\TcpServcerTest.pdb
-E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
 E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.FrmManualMode.resources
+E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.csprojResolveAssemblyReference.cache
+E:\SourceCode\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\SourceCode\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\SourceCode\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.pdb

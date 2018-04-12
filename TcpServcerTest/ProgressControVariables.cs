@@ -21,15 +21,15 @@ namespace TcpServcerTest
             dic.TryAdd("样件下半段下料至夹取位", false);
             dic.TryAdd("样件下半段下料至夹取位反馈", false);
             dic.TryAdd("样件下半段夹取位到达", false);
-            dic.TryAdd("样件下半段下料", false);
+            dic.TryAdd("样件下半段下料完成反馈", false);
             dic.TryAdd("样件上半段下料至夹取位", false);
             dic.TryAdd("样件上半段下料至夹取位反馈", false);
             dic.TryAdd("样件上半段夹取位到达", false);
-            dic.TryAdd("样件上半段下料", false);
+            dic.TryAdd("全部样件下料完成", false);
             //样件架PLC状态
             dic.TryAdd("上夹钳闭合", false);
             dic.TryAdd("下夹钳闭合", false);
-            dic.TryAdd("试验完毕", false);
+            dic.TryAdd("批次试验完毕", false);
             //拉力机PLC状态
             dic.TryAdd("U型架上升命令触发", false);
             dic.TryAdd("U型架下降命令触发", false);
@@ -54,6 +54,9 @@ namespace TcpServcerTest
             dic.TryAdd("有急停信号", false);
             dic.TryAdd("暂停命令", false);
             dic.TryAdd("满足暂停复位", false);
+            //模式选择
+            dic.TryAdd("自动模式选择", false);
+            dic.TryAdd("机器人手动模式反馈", false);
             return dic;
             }
         }

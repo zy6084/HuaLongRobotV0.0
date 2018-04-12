@@ -23,6 +23,7 @@ using System.Linq;
 using System.Timers;
 using System.Data;
 using System.Data.OleDb;
+using System.Collections.Concurrent;
 
 namespace TcpServcerTest
 {
@@ -38,6 +39,7 @@ namespace TcpServcerTest
         PC2CoderConnection cd = new PC2CoderConnection();
         public delegate void UpdateDisplayDelegate(string _msg);//数据刷新委托
         public delegate void CheckStateControlDelegate(int[] _seq);//状态控制委托
+        ConcurrentDictionary<string, bool> dic = new ConcurrentDictionary<string, bool>();
         public void UpdateDisplay(string msg)
         {
             txtLog.Text += DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss   ") + msg + "\r\n";
@@ -46,13 +48,13 @@ namespace TcpServcerTest
             txtLog.ScrollToCaret();//滚动到光标处}
         }
         public void HeightDisplay(string value) { this.txtUPlatformHeightValue.Text = value; }
-        public void CheckStateControl(int[] _seq)
-        {
-            for (int i = 0; i < checkedListBoxControl1.Items.Count; i++)
-                this.checkedListBoxControl1.Items[i].CheckState = CheckState.Unchecked;
-            foreach (var item in _seq)
-                this.checkedListBoxControl1.Items[item].CheckState = CheckState.Checked;
-        }
+        //public void CheckStateControl(int[] _seq)
+        //{
+        //    for (int i = 0; i < checkedListBoxControl1.Items.Count; i++)
+        //        this.checkedListBoxControl1.Items[i].CheckState = CheckState.Unchecked;
+        //    foreach (var item in _seq)
+        //        this.checkedListBoxControl1.Items[item].CheckState = CheckState.Checked;
+        //}
         //数值变量
         string SampleLength = string.Empty; //样本长度
         string SampleWidth = string.Empty; //样本宽度
@@ -76,9 +78,9 @@ namespace TcpServcerTest
         //PLC状态标记
         bool PLCTopCaliperClamp = false;
         bool PLCLowCaliperClamp = false;
-        bool PLCDoStatus = false;
-        bool PLCCompleteStatus = false;
-        bool PLCActive = false;
+        //bool PLCDoStatus = false;
+        //bool PLCCompleteStatus = false;
+        //bool PLCActive = false;
         bool PLCSampleComplete = false;
         //Coder状态标记
         bool PlatformUp = false;
@@ -126,6 +128,7 @@ namespace TcpServcerTest
             try
             {
                 InitializeComponent();
+                dic = new ProgressControVariables().SetKeyValue();
                 LogFactory.Assign(new ConsoleLogFactory());
                 // 异步通讯初始化 端口10001 编码UTF8
                 server = new AsyncTcpServer(10001);
@@ -145,14 +148,6 @@ namespace TcpServcerTest
                 server.Start();
                 timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
                 timer2.Elapsed += new System.Timers.ElapsedEventHandler(timer2_Elapsed);
-
-                ButtonList.Add(zq1b_Click);
-                ButtonList.Add(return1_Click);
-                ButtonList.Add(zb20_Click);
-                ButtonList.Add(zq2b_Click);
-                ButtonList.Add(return2_Click);
-                ButtonList.Add(zq3b_Click);
-                ButtonList.Add(return3_Click);
             }
             catch (Exception ex) { log.Exception(ex); }
         }
@@ -194,10 +189,14 @@ namespace TcpServcerTest
                     switch (pd.receiveCommand(e.Datagram))
                     {
                         case Params.PLC2PCCommandType.Ready:
+                            dic["上夹钳闭合"] = false;
+                            dic["下夹钳闭合"] = false;
+                            dic["上夹钳闭合"] = false;
+                            dic["上夹钳闭合"] = false;
                             PLCTopCaliperClamp = false;
                             PLCLowCaliperClamp = false;
-                            PLCDoStatus = false;
-                            PLCCompleteStatus = false;
+                            //PLCDoStatus = false;
+                            //PLCCompleteStatus = false;
                             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.Active));
                             tsbAdd_Click(null, null);
                             //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.Active));//////////////////////////////////////////////////////////////////////////////////////////////
@@ -211,8 +210,8 @@ namespace TcpServcerTest
 
                             PLCTopCaliperClamp = false;
                             PLCLowCaliperClamp = false;
-                            PLCDoStatus = false;
-                            PLCCompleteStatus = false;
+                            //PLCDoStatus = false;
+                            //PLCCompleteStatus = false;
                             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.DataFeedBack));
                             //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeight));//////////////////////////////////////////////////////////////////////////////////////////////
                             if (!PlatformStop)
@@ -493,8 +492,8 @@ namespace TcpServcerTest
                                     isHeightGet = true;
                                     //MouseMovementControl(Params.MouseMovementType.ToUp);
                                 }
-                                this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.CompleteStatus) });
-                                PLCCompleteStatus = true;
+                                //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.CompleteStatus) });
+                                //PLCCompleteStatus = true;
                                 TestingFinish = true;
                                 if (Properties.Settings.Default.类别=="1")
                                     {
@@ -561,7 +560,7 @@ namespace TcpServcerTest
                             {
                                 Thread.Sleep(10000);
                                 MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperOpen));
-                                BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperOpen) });
+                                //BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperOpen) });
                             }
                         }
                         if (RobotDW2)
@@ -581,7 +580,7 @@ namespace TcpServcerTest
                             {
                                 Thread.Sleep(10000);
                                 MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperOpen));
-                                this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperOpen) });
+                                //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperOpen) });
                             }
                         }
                     }
@@ -653,7 +652,7 @@ namespace TcpServcerTest
                                 MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperClamp));
                                 //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeightDone));//////////////////////////////////////////////////////////////////////////////////////////////
 
-                                this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperClamp) });
+                                //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperClamp) });
                                 PlatformUp = false;
                                 PlatformDown = false;
                                 PlatformHeightDone = false;
@@ -666,7 +665,7 @@ namespace TcpServcerTest
                             //sendbt = new byte[] { 0xFF, 0x00, 0x7F };
                             //MsgSend(clientCoder, sendbt);
                             MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperClamp));
-                            this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperClamp) });
+                            //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperClamp) });
                             //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeight));
                             break;
                         case Params.Robot2PCCommandType.DW1:
@@ -956,7 +955,7 @@ namespace TcpServcerTest
         private void tsbStart_Click(object sender, EventArgs e)
         {
             isSysBegin = true;
-            PLCActive = false;
+            //PLCActive = false;
             PLCSampleComplete = false;
             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.Complete));
             //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.Active));
@@ -1028,60 +1027,9 @@ namespace TcpServcerTest
             //MovingDone = true;
             }
 
-        private void zq1b_Click(object sender, EventArgs e)
-        {
-            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ1B));
-        }
-
-        private void return1_Click(object sender, EventArgs e)
-        {
-            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return1));
-        }
-
-        private void zb20_Click(object sender, EventArgs e)
-        {
-            rd.AxisValue = "10";
-            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZBAXIS));
-        }
-
-        private void zq2b_Click(object sender, EventArgs e)
-        {
-            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ2B));
-        }
-
-        private void return2_Click(object sender, EventArgs e)
-        {
-            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return2));
-        }
-
-        private void zq3b_Click(object sender, EventArgs e)
-        {
-            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ3B));
-        }
-
-        private void return3_Click(object sender, EventArgs e)
-        {
-            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return3));
-        }
         List<System.EventHandler> ButtonList = new List<System.EventHandler>();
         #endregion
 
-        private void sbMoving_Click(object sender, EventArgs e)
-        {
-            isMoving = true;
-        }
-
-        private void sbClearData_Click(object sender, EventArgs e)
-        {
-            //批次未结束置位
-            //this.bindingSource1.Clear();
-            //PLCSampleComplete = false;
-            //positionFlag = 1;
-            //operationManual = true;
-            //Testing = true;
-            //TestingFinish = true;
-            //MovingDone = true;
-            }
 
         #region Read Access MDB
         public static DataTable ReadAllData(string tableName, string mdbPath, ref bool success)
@@ -1162,6 +1110,11 @@ namespace TcpServcerTest
             }
 
         private void btnAuto_Click(object sender, EventArgs e)
+            {
+
+            }
+
+        private void btnManual_Click_1(object sender, EventArgs e)
             {
 
             }

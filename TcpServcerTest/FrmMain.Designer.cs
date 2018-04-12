@@ -64,6 +64,19 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.seBatchNum = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.groupControl1 = new DevExpress.XtraEditors.GroupControl();
+            this.btnUO = new DevExpress.XtraEditors.SimpleButton();
+            this.btnReturn1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnUC = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLO = new DevExpress.XtraEditors.SimpleButton();
+            this.btnLC = new DevExpress.XtraEditors.SimpleButton();
+            this.btnReturn2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnJQ1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnZq2b = new DevExpress.XtraEditors.SimpleButton();
+            this.btnReturn3 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnJQ2 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnZq3b = new DevExpress.XtraEditors.SimpleButton();
+            this.btnZq1b = new DevExpress.XtraEditors.SimpleButton();
             this.checkedListBoxControl2 = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.btnSysReset = new DevExpress.XtraEditors.SimpleButton();
             this.btnPause = new DevExpress.XtraEditors.SimpleButton();
@@ -71,12 +84,10 @@
             this.btnAuto = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.seZBHeight = new DevExpress.XtraEditors.SpinEdit();
-            this.checkedListBoxControl1 = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.txtUPlatformHeightValue = new DevExpress.XtraEditors.TextEdit();
             this.seHeightLowValue = new DevExpress.XtraEditors.SpinEdit();
             this.seHeightTopValue = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -86,6 +97,7 @@
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -107,14 +119,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.seBatchNum.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
+            this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seZBHeight.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUPlatformHeightValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seHeightLowValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seHeightTopValue.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
@@ -124,6 +136,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl2
@@ -197,7 +210,6 @@
             this.tsbSave.Name = "tsbSave";
             this.tsbSave.Size = new System.Drawing.Size(89, 37);
             this.tsbSave.Text = "保存数据";
-            this.tsbSave.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // tsbTest
             // 
@@ -474,7 +486,6 @@
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem4,
             this.layoutControlItem10,
-            this.layoutControlItem11,
             this.layoutControlItem7,
             this.layoutControlItem27,
             this.layoutControlItem8,
@@ -483,7 +494,8 @@
             this.layoutControlItem9,
             this.layoutControlItem13,
             this.layoutControlItem14,
-            this.layoutControlItem12});
+            this.layoutControlItem12,
+            this.layoutControlItem11});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "Root";
             this.layoutControlGroup1.Size = new System.Drawing.Size(933, 178);
@@ -522,6 +534,7 @@
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.groupControl1);
             this.layoutControl1.Controls.Add(this.checkedListBoxControl2);
             this.layoutControl1.Controls.Add(this.btnSysReset);
             this.layoutControl1.Controls.Add(this.btnPause);
@@ -529,7 +542,6 @@
             this.layoutControl1.Controls.Add(this.btnAuto);
             this.layoutControl1.Controls.Add(this.labelControl1);
             this.layoutControl1.Controls.Add(this.seZBHeight);
-            this.layoutControl1.Controls.Add(this.checkedListBoxControl1);
             this.layoutControl1.Controls.Add(this.txtUPlatformHeightValue);
             this.layoutControl1.Controls.Add(this.seHeightLowValue);
             this.layoutControl1.Controls.Add(this.seHeightTopValue);
@@ -543,6 +555,150 @@
             this.layoutControl1.Size = new System.Drawing.Size(933, 178);
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
+            // 
+            // groupControl1
+            // 
+            this.groupControl1.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.groupControl1.Appearance.ForeColor = System.Drawing.Color.Transparent;
+            this.groupControl1.Appearance.Options.UseBackColor = true;
+            this.groupControl1.Appearance.Options.UseForeColor = true;
+            this.groupControl1.Controls.Add(this.btnUO);
+            this.groupControl1.Controls.Add(this.btnReturn1);
+            this.groupControl1.Controls.Add(this.btnUC);
+            this.groupControl1.Controls.Add(this.btnLO);
+            this.groupControl1.Controls.Add(this.btnLC);
+            this.groupControl1.Controls.Add(this.btnReturn2);
+            this.groupControl1.Controls.Add(this.btnJQ1);
+            this.groupControl1.Controls.Add(this.btnZq2b);
+            this.groupControl1.Controls.Add(this.btnReturn3);
+            this.groupControl1.Controls.Add(this.btnJQ2);
+            this.groupControl1.Controls.Add(this.btnZq3b);
+            this.groupControl1.Controls.Add(this.btnZq1b);
+            this.groupControl1.Location = new System.Drawing.Point(262, 37);
+            this.groupControl1.Name = "groupControl1";
+            this.groupControl1.Size = new System.Drawing.Size(293, 129);
+            this.groupControl1.TabIndex = 27;
+            this.groupControl1.Text = "单步命令";
+            // 
+            // btnUO
+            // 
+            this.btnUO.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUO.Appearance.Options.UseFont = true;
+            this.btnUO.Location = new System.Drawing.Point(204, 100);
+            this.btnUO.Name = "btnUO";
+            this.btnUO.Size = new System.Drawing.Size(75, 23);
+            this.btnUO.TabIndex = 12;
+            this.btnUO.Text = "上夹钳打开";
+            // 
+            // btnReturn1
+            // 
+            this.btnReturn1.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn1.Appearance.Options.UseFont = true;
+            this.btnReturn1.Location = new System.Drawing.Point(5, 53);
+            this.btnReturn1.Name = "btnReturn1";
+            this.btnReturn1.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn1.TabIndex = 10;
+            this.btnReturn1.Text = "送入拉力机";
+            // 
+            // btnUC
+            // 
+            this.btnUC.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUC.Appearance.Options.UseFont = true;
+            this.btnUC.Location = new System.Drawing.Point(204, 77);
+            this.btnUC.Name = "btnUC";
+            this.btnUC.Size = new System.Drawing.Size(75, 23);
+            this.btnUC.TabIndex = 9;
+            this.btnUC.Text = "上夹钳闭合";
+            // 
+            // btnLO
+            // 
+            this.btnLO.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLO.Appearance.Options.UseFont = true;
+            this.btnLO.Location = new System.Drawing.Point(204, 53);
+            this.btnLO.Name = "btnLO";
+            this.btnLO.Size = new System.Drawing.Size(75, 23);
+            this.btnLO.TabIndex = 8;
+            this.btnLO.Text = "下夹钳打开";
+            // 
+            // btnLC
+            // 
+            this.btnLC.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLC.Appearance.Options.UseFont = true;
+            this.btnLC.Location = new System.Drawing.Point(204, 28);
+            this.btnLC.Name = "btnLC";
+            this.btnLC.Size = new System.Drawing.Size(75, 23);
+            this.btnLC.TabIndex = 7;
+            this.btnLC.Text = "下夹钳闭合";
+            // 
+            // btnReturn2
+            // 
+            this.btnReturn2.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn2.Appearance.Options.UseFont = true;
+            this.btnReturn2.Location = new System.Drawing.Point(105, 100);
+            this.btnReturn2.Name = "btnReturn2";
+            this.btnReturn2.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn2.TabIndex = 6;
+            this.btnReturn2.Text = "上半段下料";
+            // 
+            // btnJQ1
+            // 
+            this.btnJQ1.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJQ1.Appearance.Options.UseFont = true;
+            this.btnJQ1.Location = new System.Drawing.Point(105, 77);
+            this.btnJQ1.Name = "btnJQ1";
+            this.btnJQ1.Size = new System.Drawing.Size(75, 23);
+            this.btnJQ1.TabIndex = 5;
+            this.btnJQ1.Text = "上半段夹紧";
+            // 
+            // btnZq2b
+            // 
+            this.btnZq2b.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZq2b.Appearance.Options.UseFont = true;
+            this.btnZq2b.Location = new System.Drawing.Point(105, 53);
+            this.btnZq2b.Name = "btnZq2b";
+            this.btnZq2b.Size = new System.Drawing.Size(75, 23);
+            this.btnZq2b.TabIndex = 4;
+            this.btnZq2b.Text = "抓取上半段";
+            // 
+            // btnReturn3
+            // 
+            this.btnReturn3.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturn3.Appearance.Options.UseFont = true;
+            this.btnReturn3.Location = new System.Drawing.Point(105, 28);
+            this.btnReturn3.Name = "btnReturn3";
+            this.btnReturn3.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn3.TabIndex = 3;
+            this.btnReturn3.Text = "下半段下料";
+            // 
+            // btnJQ2
+            // 
+            this.btnJQ2.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnJQ2.Appearance.Options.UseFont = true;
+            this.btnJQ2.Location = new System.Drawing.Point(5, 101);
+            this.btnJQ2.Name = "btnJQ2";
+            this.btnJQ2.Size = new System.Drawing.Size(75, 23);
+            this.btnJQ2.TabIndex = 2;
+            this.btnJQ2.Text = "下半段夹紧";
+            // 
+            // btnZq3b
+            // 
+            this.btnZq3b.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZq3b.Appearance.Options.UseFont = true;
+            this.btnZq3b.Location = new System.Drawing.Point(5, 77);
+            this.btnZq3b.Name = "btnZq3b";
+            this.btnZq3b.Size = new System.Drawing.Size(75, 23);
+            this.btnZq3b.TabIndex = 1;
+            this.btnZq3b.Text = "抓取下半段";
+            // 
+            // btnZq1b
+            // 
+            this.btnZq1b.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnZq1b.Appearance.Options.UseFont = true;
+            this.btnZq1b.Location = new System.Drawing.Point(5, 28);
+            this.btnZq1b.Name = "btnZq1b";
+            this.btnZq1b.Size = new System.Drawing.Size(75, 23);
+            this.btnZq1b.TabIndex = 0;
+            this.btnZq1b.Text = "抓取样件";
             // 
             // checkedListBoxControl2
             // 
@@ -558,11 +714,13 @@
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "07-取下半段样件至夹取位"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "08-下半段样件下料"),
             new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "09-取上半段样件至夹取位"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "10-上半段取料")});
-            this.checkedListBoxControl2.Location = new System.Drawing.Point(568, 37);
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "10-上半段取料"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "11-暂停状态"),
+            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "12-急停状态")});
+            this.checkedListBoxControl2.Location = new System.Drawing.Point(559, 37);
             this.checkedListBoxControl2.MultiColumn = true;
             this.checkedListBoxControl2.Name = "checkedListBoxControl2";
-            this.checkedListBoxControl2.Size = new System.Drawing.Size(353, 129);
+            this.checkedListBoxControl2.Size = new System.Drawing.Size(362, 129);
             this.checkedListBoxControl2.StyleController = this.layoutControl1;
             this.checkedListBoxControl2.TabIndex = 26;
             // 
@@ -598,6 +756,7 @@
             this.btnManual.StyleController = this.layoutControl1;
             this.btnManual.TabIndex = 22;
             this.btnManual.Text = "手动";
+            this.btnManual.Click += new System.EventHandler(this.btnManual_Click_1);
             // 
             // btnAuto
             // 
@@ -637,28 +796,6 @@
             this.seZBHeight.Size = new System.Drawing.Size(157, 21);
             this.seZBHeight.StyleController = this.layoutControl1;
             this.seZBHeight.TabIndex = 19;
-            // 
-            // checkedListBoxControl1
-            // 
-            this.checkedListBoxControl1.Appearance.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.checkedListBoxControl1.Appearance.Options.UseFont = true;
-            this.checkedListBoxControl1.Items.AddRange(new DevExpress.XtraEditors.Controls.CheckedListBoxItem[] {
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机上卡钳夹紧"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机下卡钳夹紧"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机上卡钳夹紧完成"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机下卡钳夹紧完成"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机上卡钳松开"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机下卡钳松开"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机上卡钳松开完成"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "拉力机下卡钳松开完成"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "急停状态"),
-            new DevExpress.XtraEditors.Controls.CheckedListBoxItem(true, "故障报警状态")});
-            this.checkedListBoxControl1.Location = new System.Drawing.Point(262, 37);
-            this.checkedListBoxControl1.MultiColumn = true;
-            this.checkedListBoxControl1.Name = "checkedListBoxControl1";
-            this.checkedListBoxControl1.Size = new System.Drawing.Size(302, 129);
-            this.checkedListBoxControl1.StyleController = this.layoutControl1;
-            this.checkedListBoxControl1.TabIndex = 10;
             // 
             // txtUPlatformHeightValue
             // 
@@ -715,18 +852,6 @@
             this.layoutControlItem10.TextAlignMode = DevExpress.XtraLayout.TextAlignModeItem.AutoSize;
             this.layoutControlItem10.TextSize = new System.Drawing.Size(62, 19);
             this.layoutControlItem10.TextToControlDistance = 5;
-            // 
-            // layoutControlItem11
-            // 
-            this.layoutControlItem11.Control = this.checkedListBoxControl1;
-            this.layoutControlItem11.CustomizationFormText = "layoutControlItem11";
-            this.layoutControlItem11.Location = new System.Drawing.Point(250, 0);
-            this.layoutControlItem11.Name = "layoutControlItem11";
-            this.layoutControlItem11.Size = new System.Drawing.Size(306, 133);
-            this.layoutControlItem11.Text = "layoutControlItem11";
-            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
-            this.layoutControlItem11.TextToControlDistance = 0;
-            this.layoutControlItem11.TextVisible = false;
             // 
             // layoutControlItem7
             // 
@@ -837,13 +962,25 @@
             // 
             this.layoutControlItem12.Control = this.checkedListBoxControl2;
             this.layoutControlItem12.CustomizationFormText = "layoutControlItem12";
-            this.layoutControlItem12.Location = new System.Drawing.Point(556, 0);
+            this.layoutControlItem12.Location = new System.Drawing.Point(547, 0);
             this.layoutControlItem12.Name = "layoutControlItem12";
-            this.layoutControlItem12.Size = new System.Drawing.Size(357, 133);
+            this.layoutControlItem12.Size = new System.Drawing.Size(366, 133);
             this.layoutControlItem12.Text = "layoutControlItem12";
             this.layoutControlItem12.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem12.TextToControlDistance = 0;
             this.layoutControlItem12.TextVisible = false;
+            // 
+            // layoutControlItem11
+            // 
+            this.layoutControlItem11.Control = this.groupControl1;
+            this.layoutControlItem11.CustomizationFormText = "layoutControlItem11";
+            this.layoutControlItem11.Location = new System.Drawing.Point(250, 0);
+            this.layoutControlItem11.Name = "layoutControlItem11";
+            this.layoutControlItem11.Size = new System.Drawing.Size(297, 133);
+            this.layoutControlItem11.Text = "layoutControlItem11";
+            this.layoutControlItem11.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem11.TextToControlDistance = 0;
+            this.layoutControlItem11.TextVisible = false;
             // 
             // FrmMain
             // 
@@ -881,14 +1018,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.seBatchNum.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).EndInit();
+            this.groupControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seZBHeight.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUPlatformHeightValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seHeightLowValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seHeightTopValue.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
@@ -898,6 +1035,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -940,8 +1078,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraEditors.TextEdit txtUPlatformHeightValue;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem10;
-        private DevExpress.XtraEditors.CheckedListBoxControl checkedListBoxControl1;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
         private DevExpress.XtraEditors.SpinEdit seZBHeight;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem27;
         private System.Windows.Forms.ToolStripButton tsbSave;
@@ -960,5 +1096,19 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraEditors.CheckedListBoxControl checkedListBoxControl2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraEditors.GroupControl groupControl1;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private DevExpress.XtraEditors.SimpleButton btnReturn1;
+        private DevExpress.XtraEditors.SimpleButton btnUC;
+        private DevExpress.XtraEditors.SimpleButton btnLO;
+        private DevExpress.XtraEditors.SimpleButton btnLC;
+        private DevExpress.XtraEditors.SimpleButton btnReturn2;
+        private DevExpress.XtraEditors.SimpleButton btnJQ1;
+        private DevExpress.XtraEditors.SimpleButton btnZq2b;
+        private DevExpress.XtraEditors.SimpleButton btnReturn3;
+        private DevExpress.XtraEditors.SimpleButton btnJQ2;
+        private DevExpress.XtraEditors.SimpleButton btnZq3b;
+        private DevExpress.XtraEditors.SimpleButton btnZq1b;
+        private DevExpress.XtraEditors.SimpleButton btnUO;
         }
 }

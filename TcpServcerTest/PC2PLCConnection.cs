@@ -63,6 +63,9 @@ namespace TcpServcerTest
                     case "LowCaliperOpen":
                         sendbt = new byte[] { 0x00, 0x80 };
                         break;
+                    case "ER":
+                        sendbt = new byte[] { 0x00,0x0A};
+                        break;
                     }
                 return sendbt;
             }
@@ -96,6 +99,21 @@ namespace TcpServcerTest
                         break;
                     case "0004":
                         rct = Params.PLC2PCCommandType.MeasuerRrror;
+                        break;
+                    case "000A":
+                        rct = Params.PLC2PCCommandType.CoderER;
+                        break;
+                    case "000B":
+                        rct = Params.PLC2PCCommandType.PLCER;
+                        break;
+                    case "000C":
+                        rct = Params.PLC2PCCommandType.RobotER;
+                        break;
+                    case "000D":
+                        rct = Params.PLC2PCCommandType.IntrusionDetectionER;
+                        break;
+                    case "000E":
+                        rct = Params.PLC2PCCommandType.DevER;
                         break;
                     default:
                         rct = Params.PLC2PCCommandType.Error;
