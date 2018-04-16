@@ -35,7 +35,6 @@ namespace TcpServcerTest
         static TcpClient clientCoder;
         PC2RobotConnection rd = new PC2RobotConnection();
         PC2PLCConnection pd = new PC2PLCConnection();
-        //PC2CoderConnection cd = new PC2CoderConnection();
         public delegate void UpdateDisplayDelegate(string _msg);//数据刷新委托
         public delegate void CheckStateControlDelegate(int[] _seq);//状态控制委托
         ConcurrentDictionary<string, bool> dic = new ConcurrentDictionary<string, bool>();
@@ -55,54 +54,11 @@ namespace TcpServcerTest
         //    foreach (var item in _seq)
         //        this.checkedListBoxControl1.Items[item].CheckState = CheckState.Checked;
         //}
-        //数值变量
-        string SampleLength = string.Empty; //样本长度
-        string SampleDiameter = string.Empty;
-
-        //Robot状态标记
-        bool RobotReady = false;
-        bool RobotFeedBack3flag = false;
-        bool RobotFeedBack1flag = false;
-        bool RobotFinishflag = false;
-        bool RobotZq1b = false;
-        bool RobotZq1f = false;
-        bool RobotZq2b = false;
-        bool RobotZq2f = false;
-        bool RobotZq3b = false;
-        bool RobotZq3f = false;
-        //bool RobotReturn1 = false;
-        bool RobotDW1 = false;
-        bool RobotDW2 = false;
-        //PLC状态标记
-        bool PLCTopCaliperClamp = false;
-        bool PLCLowCaliperClamp = false;
-        //bool PLCDoStatus = false;
-        //bool PLCCompleteStatus = false;
-        //bool PLCActive = false;
-        bool PLCSampleComplete = false;
-        //Coder状态标记
-        bool PlatformUp = false;
-        bool PlatformDown = false;
-        bool PlatformStop = false;
-        //bool PlatformAllClamp = false;
-        bool PlatformIniDone = false;
-        bool PlatformHeightDone = false;
-        bool Testing = false;//开始实验
-        bool isTestLens = false; //自动移动，代替测试中实验功能
-        bool TestingFinish = false;//实验完毕
-        bool isMoving = false;//上台开始移动
-        bool isStop = false;//上开静止
-        bool MovingDone = false;//拉断后向上移动5秒完成
-        bool isLowCaliperClamp = false;
-        bool isTopCaliperClamp = false;
-        bool isSysBegin = false;
-        bool isHeightGet = false;
-        bool isHeightDown = false;
-        bool DownMovingDone = false;
+        decimal SampleLength =0; 
+        decimal SampleDiameter = 0;       
         float V_Height = 0;
         int i = 0;
         string fracturePositionResult = string.Empty;
-        bool saveComplete = false;
         int positionFlag = 0;
         public List<string> strList = new List<string>();
         List<FileTimeInfo> ftl = null;
@@ -126,6 +82,7 @@ namespace TcpServcerTest
             try
             {
                 InitializeComponent();
+                btnAuto.Enabled = false;
                 dic = new ProcessControVariables().SetKeyValue();
                 dic["自动模式选择"] = true;
                 LogFactory.Assign(new ConsoleLogFactory());
@@ -143,11 +100,13 @@ namespace TcpServcerTest
                   new EventHandler<TcpDatagramReceivedEventArgs<string>>(server_PlaintextReceived);
                 // 接受byte[]类型电文事件
                 server.DatagramReceived += new EventHandler<TcpDatagramReceivedEventArgs<byte[]>>(server_DatagramReceived);
+                frmMM.ManualOperationOrders += FrmMM_ManualOperationOrders;
                 // 启动服务程序
                 server.Start();
             }
             catch (Exception ex) { log.Exception(ex); }
         }
+
 
         #region 客户端连接事件
         void server_ClientConnected(object sender, TcpClientConnectedEventArgs e)
@@ -159,7 +118,6 @@ namespace TcpServcerTest
                 if (ClientIP.Address.ToString() == Properties.Settings.Default.拉力机PLC端) clientCoder = e.TcpClient;
                 if (ClientIP.Address.ToString() == Properties.Settings.Default.Robot端) clientRobot = e.TcpClient;
                 LogRefresh(ipC.iPConfig[ClientIP.Address.ToString()] + e.TcpClient.Client.RemoteEndPoint.ToString() + "  has connected.", null);
-                frmMM.ManualOperationOrders += FrmMM_ManualOperationOrders;
             }
             catch (Exception ex) { log.Exception(ex); }
         }
@@ -168,41 +126,41 @@ namespace TcpServcerTest
             {
             switch (e.orderName)
                 {
-                case "zq1b":
+                case "ZQ1B":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ1B));
                     break;
-                case "return1":
+                case "Return1":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return1));
                     break;
-                case "zq2b":
+                case "ZQ2B":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ2B));
                     break;
-                case "return2":
+                case "Return2":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return2));
                     break;
-                case "zq3b":
+                case "ZQ3B":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ3B));
                     break;
-                case "return3":
+                case "Return3":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return3));
                     break;
-                case "jq1":
+                case "JQ1":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ1));
                     break;
-                case "jq2":
+                case "JQ2":
                     MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ2));
                     break;
                 case "TopCaliperClamp":
                     MsgSend(clientCoder, new byte[] { 0x01, 0x00 });
                     break;
                 case "LowCaliperClamp":
-                    MsgSend(clientRobot, new byte[] { 0x02, 0x00 });
+                    MsgSend(clientCoder, new byte[] { 0x02, 0x00 });
                     break;
                 case "TopCaliperOpen":
-                    MsgSend(clientRobot, new byte[] { 0x00, 0x40 });
+                    MsgSend(clientCoder, new byte[] { 0x00, 0x40 });
                     break;
                 case "LowCaliperOpen":
-                    MsgSend(clientRobot, new byte[] { 0x00, 0x80 });
+                    MsgSend(clientCoder, new byte[] { 0x00, 0x80 });
                     break;
                 default:
                     break;
@@ -248,6 +206,8 @@ namespace TcpServcerTest
                             dic["上夹钳闭合"] = false;
                             dic["下夹钳闭合"] = false;
                             dic["批次试验完成"] = false;
+                            SampleDiameter = seDiameter.Value;
+                            SampleLength = seLength.Value;
                             //PLCDoStatus = false;
                             //PLCCompleteStatus = false;
                             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.DataFeedBack));
@@ -306,7 +266,7 @@ namespace TcpServcerTest
                         }
                         if ( !dic["样件上半段下料至夹取位"] && dic["开始试验"] && dic["试验完毕"] && dic["拉断后U型架抬升完成"]) //获取上升高度，命令机器人抓取
                         {
-                            if ((positionFlag==1&& RobotFeedBack3flag)||positionFlag==3)
+                            if ((positionFlag==1&& dic["样件下半段下料至夹取位反馈"])||positionFlag==3)
                                 {
                                 if (!dic["U型架正在下降"])
                                     {
@@ -476,7 +436,7 @@ namespace TcpServcerTest
 
                         if (dic["样件上半段下料至夹取位反馈"] && !ss.isTopCaliperClamp) //机器人取出上断裂样件后返回
                             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return2));
-                        if (RobotZq3f && !ss.isLowCaliperClamp) //机器人取出下断裂样件后返回
+                        if (dic["样件下半段下料至夹取位反馈"] && !ss.isLowCaliperClamp) //机器人取出下断裂样件后返回
                             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return3));
                         if (dic["样件上半段夹取位到达"])
                         {  
@@ -745,13 +705,13 @@ namespace TcpServcerTest
         {
             try
             {
-                if (this.seBatchNum.Value > 0 && this.seHeightLowValue.Value > 0 && this.seHeightTopValue.Value > 0)
+                if (this.seBatchNum.Value > 0 && this.seLength.Value > 0 && this.seDiameter.Value > 0)
                 {
-                    if (this.seHeightTopValue.Value >= this.seHeightLowValue.Value)
+                    if (this.seDiameter.Value >= this.seLength.Value)
                     {
                         string BatchNum = Int16.Parse(seBatchNum.Value.ToString()).ToString("x8");
-                        string ThickTop = Int16.Parse(seHeightTopValue.Value.ToString()).ToString("x8");
-                        string ThickLow = Int16.Parse(seHeightLowValue.Value.ToString()).ToString("x8");
+                        string ThickTop = Int16.Parse(seDiameter.Value.ToString()).ToString("x8");
+                        string ThickLow = Int16.Parse(seLength.Value.ToString()).ToString("x8");
                         byte[] sampleProperty = new byte[] { 0xEE, CommonFunction.strToHexByte(BatchNum)[3], CommonFunction.strToHexByte(ThickTop)[3], CommonFunction.strToHexByte(ThickLow)[3], 0xFF };
                         pd.SampleProperty = sampleProperty;
                         MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.SamplePlan));
@@ -909,7 +869,7 @@ namespace TcpServcerTest
             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.PS));
             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.PS));
             MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.PS));
-            if (Testing&&!isStop)
+            if (dic["开始试验"] &&!dic["U型架移动到位并停止"])
                 {
                 MouseMovementControl(Params.MouseMovementType.ToStop);
                 dic["开始试验"] = false;

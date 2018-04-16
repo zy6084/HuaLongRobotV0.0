@@ -104,6 +104,7 @@
             this.btnReturn2.TabIndex = 7;
             this.btnReturn2.Text = "上样件返回";
             this.btnReturn2.UseVisualStyleBackColor = true;
+            this.btnReturn2.Click += new System.EventHandler(this.btnReturn2_Click);
             // 
             // btnJQ1
             // 
@@ -113,6 +114,7 @@
             this.btnJQ1.TabIndex = 6;
             this.btnJQ1.Text = "上样件夹紧";
             this.btnJQ1.UseVisualStyleBackColor = true;
+            this.btnJQ1.Click += new System.EventHandler(this.btnJQ1_Click);
             // 
             // btnZq2b
             // 
@@ -122,6 +124,7 @@
             this.btnZq2b.TabIndex = 5;
             this.btnZq2b.Text = "抓取上样件";
             this.btnZq2b.UseVisualStyleBackColor = true;
+            this.btnZq2b.Click += new System.EventHandler(this.btnZq2b_Click);
             // 
             // btnReturn3
             // 
@@ -131,6 +134,7 @@
             this.btnReturn3.TabIndex = 4;
             this.btnReturn3.Text = "下样件返回";
             this.btnReturn3.UseVisualStyleBackColor = true;
+            this.btnReturn3.Click += new System.EventHandler(this.btnReturn3_Click);
             // 
             // btnJQ2
             // 
@@ -140,6 +144,7 @@
             this.btnJQ2.TabIndex = 3;
             this.btnJQ2.Text = "下样件夹紧";
             this.btnJQ2.UseVisualStyleBackColor = true;
+            this.btnJQ2.Click += new System.EventHandler(this.btnJQ2_Click);
             // 
             // btnZq3b
             // 
@@ -149,6 +154,7 @@
             this.btnZq3b.TabIndex = 2;
             this.btnZq3b.Text = "抓取下样件";
             this.btnZq3b.UseVisualStyleBackColor = true;
+            this.btnZq3b.Click += new System.EventHandler(this.btnZq3b_Click);
             // 
             // btnReturn1
             // 
@@ -158,6 +164,7 @@
             this.btnReturn1.TabIndex = 1;
             this.btnReturn1.Text = "返回";
             this.btnReturn1.UseVisualStyleBackColor = true;
+            this.btnReturn1.Click += new System.EventHandler(this.btnReturn1_Click);
             // 
             // btnzq1b
             // 
@@ -177,6 +184,7 @@
             this.btnTC.TabIndex = 8;
             this.btnTC.Text = "上夹钳闭合";
             this.btnTC.UseVisualStyleBackColor = true;
+            this.btnTC.Click += new System.EventHandler(this.btnTC_Click);
             // 
             // btnLC
             // 
@@ -186,6 +194,7 @@
             this.btnLC.TabIndex = 9;
             this.btnLC.Text = "下夹钳闭合";
             this.btnLC.UseVisualStyleBackColor = true;
+            this.btnLC.Click += new System.EventHandler(this.btnLC_Click);
             // 
             // btnTO
             // 
@@ -195,6 +204,7 @@
             this.btnTO.TabIndex = 10;
             this.btnTO.Text = "上夹钳打开";
             this.btnTO.UseVisualStyleBackColor = true;
+            this.btnTO.Click += new System.EventHandler(this.btnTO_Click);
             // 
             // btnLO
             // 
@@ -204,6 +214,7 @@
             this.btnLO.TabIndex = 11;
             this.btnLO.Text = "下夹钳打开";
             this.btnLO.UseVisualStyleBackColor = true;
+            this.btnLO.Click += new System.EventHandler(this.btnLO_Click);
             // 
             // groupBox2
             // 

@@ -72,8 +72,8 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.seZBHeight = new DevExpress.XtraEditors.SpinEdit();
             this.txtUPlatformHeightValue = new DevExpress.XtraEditors.TextEdit();
-            this.seHeightLowValue = new DevExpress.XtraEditors.SpinEdit();
-            this.seHeightTopValue = new DevExpress.XtraEditors.SpinEdit();
+            this.seLength = new DevExpress.XtraEditors.SpinEdit();
+            this.seDiameter = new DevExpress.XtraEditors.SpinEdit();
             this.layoutControlItem10 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem27 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -109,8 +109,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.seZBHeight.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUPlatformHeightValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seHeightLowValue.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seHeightTopValue.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLength.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seDiameter.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).BeginInit();
@@ -525,8 +525,8 @@
             this.layoutControl1.Controls.Add(this.labelControl1);
             this.layoutControl1.Controls.Add(this.seZBHeight);
             this.layoutControl1.Controls.Add(this.txtUPlatformHeightValue);
-            this.layoutControl1.Controls.Add(this.seHeightLowValue);
-            this.layoutControl1.Controls.Add(this.seHeightTopValue);
+            this.layoutControl1.Controls.Add(this.seLength);
+            this.layoutControl1.Controls.Add(this.seDiameter);
             this.layoutControl1.Controls.Add(this.seBatchNum);
             this.layoutControl1.Dock = System.Windows.Forms.DockStyle.Top;
             this.layoutControl1.Location = new System.Drawing.Point(0, 0);
@@ -654,39 +654,39 @@
             this.txtUPlatformHeightValue.StyleController = this.layoutControl1;
             this.txtUPlatformHeightValue.TabIndex = 9;
             // 
-            // seHeightLowValue
+            // seLength
             // 
-            this.seHeightLowValue.EditValue = new decimal(new int[] {
-            20,
+            this.seLength.EditValue = new decimal(new int[] {
+            800,
             0,
             0,
             0});
-            this.seHeightLowValue.Location = new System.Drawing.Point(184, 62);
-            this.seHeightLowValue.Name = "seHeightLowValue";
-            this.seHeightLowValue.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.seHeightLowValue.Properties.Appearance.Options.UseFont = true;
-            this.seHeightLowValue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.seLength.Location = new System.Drawing.Point(184, 62);
+            this.seLength.Name = "seLength";
+            this.seLength.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.seLength.Properties.Appearance.Options.UseFont = true;
+            this.seLength.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.seHeightLowValue.Size = new System.Drawing.Size(94, 21);
-            this.seHeightLowValue.StyleController = this.layoutControl1;
-            this.seHeightLowValue.TabIndex = 8;
+            this.seLength.Size = new System.Drawing.Size(94, 21);
+            this.seLength.StyleController = this.layoutControl1;
+            this.seLength.TabIndex = 8;
             // 
-            // seHeightTopValue
+            // seDiameter
             // 
-            this.seHeightTopValue.EditValue = new decimal(new int[] {
-            60,
+            this.seDiameter.EditValue = new decimal(new int[] {
+            25,
             0,
             0,
             0});
-            this.seHeightTopValue.Location = new System.Drawing.Point(184, 37);
-            this.seHeightTopValue.Name = "seHeightTopValue";
-            this.seHeightTopValue.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
-            this.seHeightTopValue.Properties.Appearance.Options.UseFont = true;
-            this.seHeightTopValue.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            this.seDiameter.Location = new System.Drawing.Point(184, 37);
+            this.seDiameter.Name = "seDiameter";
+            this.seDiameter.Properties.Appearance.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
+            this.seDiameter.Properties.Appearance.Options.UseFont = true;
+            this.seDiameter.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.seHeightTopValue.Size = new System.Drawing.Size(94, 21);
-            this.seHeightTopValue.StyleController = this.layoutControl1;
-            this.seHeightTopValue.TabIndex = 7;
+            this.seDiameter.Size = new System.Drawing.Size(94, 21);
+            this.seDiameter.StyleController = this.layoutControl1;
+            this.seDiameter.TabIndex = 7;
             // 
             // layoutControlItem10
             // 
@@ -706,7 +706,7 @@
             // 
             this.layoutControlItem7.AppearanceItemCaption.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.layoutControlItem7.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem7.Control = this.seHeightTopValue;
+            this.layoutControlItem7.Control = this.seDiameter;
             this.layoutControlItem7.CustomizationFormText = "厚度上限";
             this.layoutControlItem7.Location = new System.Drawing.Point(141, 0);
             this.layoutControlItem7.Name = "layoutControlItem7";
@@ -732,7 +732,7 @@
             // 
             this.layoutControlItem8.AppearanceItemCaption.Font = new System.Drawing.Font("微软雅黑", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.layoutControlItem8.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem8.Control = this.seHeightLowValue;
+            this.layoutControlItem8.Control = this.seLength;
             this.layoutControlItem8.CustomizationFormText = "厚度下限";
             this.layoutControlItem8.Location = new System.Drawing.Point(141, 25);
             this.layoutControlItem8.Name = "layoutControlItem8";
@@ -859,8 +859,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.seZBHeight.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtUPlatformHeightValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seHeightLowValue.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.seHeightTopValue.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seLength.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.seDiameter.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem10)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem27)).EndInit();
@@ -907,8 +907,8 @@
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraEditors.SpinEdit seBatchNum;
-        private DevExpress.XtraEditors.SpinEdit seHeightLowValue;
-        private DevExpress.XtraEditors.SpinEdit seHeightTopValue;
+        private DevExpress.XtraEditors.SpinEdit seLength;
+        private DevExpress.XtraEditors.SpinEdit seDiameter;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
         private DevExpress.XtraEditors.TextEdit txtUPlatformHeightValue;
