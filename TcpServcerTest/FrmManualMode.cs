@@ -11,9 +11,34 @@ namespace TcpServcerTest
     {
     public partial class FrmManualMode : Form
         {
+        public event EventHandler<OrderTypeEventArgs> ManualOperationOrders;
+
         public FrmManualMode()
             {
-            InitializeComponent();
+            InitializeComponent();            
+            }
+
+        protected virtual void OnOrderChanged(OrderTypeEventArgs e)
+            {
+            ManualOperationOrders?.Invoke(this, e);
+            }
+
+        private void btnzq1b_Click(object sender, EventArgs e)
+            {
+            OnOrderChanged(new OrderTypeEventArgs("zq1b"));
+            }
+
+        private void btnExit_Click(object sender, EventArgs e)
+            {
+            this.Close();
+            }
+        }
+    public class OrderTypeEventArgs : EventArgs
+        {
+        public string orderName;
+        public OrderTypeEventArgs(string order)
+            {
+            orderName = order;
             }
         }
     }

@@ -31,21 +31,21 @@
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button9 = new System.Windows.Forms.Button();
-            this.button10 = new System.Windows.Forms.Button();
-            this.button11 = new System.Windows.Forms.Button();
-            this.button12 = new System.Windows.Forms.Button();
+            this.btnReturn2 = new System.Windows.Forms.Button();
+            this.btnJQ1 = new System.Windows.Forms.Button();
+            this.btnZq2b = new System.Windows.Forms.Button();
+            this.btnReturn3 = new System.Windows.Forms.Button();
+            this.btnJQ2 = new System.Windows.Forms.Button();
+            this.btnZq3b = new System.Windows.Forms.Button();
+            this.btnReturn1 = new System.Windows.Forms.Button();
+            this.btnzq1b = new System.Windows.Forms.Button();
+            this.btnTC = new System.Windows.Forms.Button();
+            this.btnLC = new System.Windows.Forms.Button();
+            this.btnTO = new System.Windows.Forms.Button();
+            this.btnLO = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.button13 = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -81,14 +81,14 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button8);
-            this.groupBox1.Controls.Add(this.button7);
-            this.groupBox1.Controls.Add(this.button6);
-            this.groupBox1.Controls.Add(this.button5);
-            this.groupBox1.Controls.Add(this.button4);
-            this.groupBox1.Controls.Add(this.button3);
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
+            this.groupBox1.Controls.Add(this.btnReturn2);
+            this.groupBox1.Controls.Add(this.btnJQ1);
+            this.groupBox1.Controls.Add(this.btnZq2b);
+            this.groupBox1.Controls.Add(this.btnReturn3);
+            this.groupBox1.Controls.Add(this.btnJQ2);
+            this.groupBox1.Controls.Add(this.btnZq3b);
+            this.groupBox1.Controls.Add(this.btnReturn1);
+            this.groupBox1.Controls.Add(this.btnzq1b);
             this.groupBox1.Location = new System.Drawing.Point(4, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(383, 133);
@@ -96,120 +96,121 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "机器人指令";
             // 
-            // button1
+            // btnReturn2
             // 
-            this.button1.Location = new System.Drawing.Point(22, 33);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "抓取样件";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnReturn2.Location = new System.Drawing.Point(296, 86);
+            this.btnReturn2.Name = "btnReturn2";
+            this.btnReturn2.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn2.TabIndex = 7;
+            this.btnReturn2.Text = "上样件返回";
+            this.btnReturn2.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // btnJQ1
             // 
-            this.button2.Location = new System.Drawing.Point(114, 33);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 1;
-            this.button2.Text = "返回";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnJQ1.Location = new System.Drawing.Point(205, 86);
+            this.btnJQ1.Name = "btnJQ1";
+            this.btnJQ1.Size = new System.Drawing.Size(75, 23);
+            this.btnJQ1.TabIndex = 6;
+            this.btnJQ1.Text = "上样件夹紧";
+            this.btnJQ1.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // btnZq2b
             // 
-            this.button3.Location = new System.Drawing.Point(205, 33);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "抓取下样件";
-            this.button3.UseVisualStyleBackColor = true;
+            this.btnZq2b.Location = new System.Drawing.Point(114, 86);
+            this.btnZq2b.Name = "btnZq2b";
+            this.btnZq2b.Size = new System.Drawing.Size(75, 23);
+            this.btnZq2b.TabIndex = 5;
+            this.btnZq2b.Text = "抓取上样件";
+            this.btnZq2b.UseVisualStyleBackColor = true;
             // 
-            // button4
+            // btnReturn3
             // 
-            this.button4.Location = new System.Drawing.Point(296, 33);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "下样件夹紧";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btnReturn3.Location = new System.Drawing.Point(22, 86);
+            this.btnReturn3.Name = "btnReturn3";
+            this.btnReturn3.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn3.TabIndex = 4;
+            this.btnReturn3.Text = "下样件返回";
+            this.btnReturn3.UseVisualStyleBackColor = true;
             // 
-            // button5
+            // btnJQ2
             // 
-            this.button5.Location = new System.Drawing.Point(22, 86);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(75, 23);
-            this.button5.TabIndex = 4;
-            this.button5.Text = "下样件返回";
-            this.button5.UseVisualStyleBackColor = true;
+            this.btnJQ2.Location = new System.Drawing.Point(296, 33);
+            this.btnJQ2.Name = "btnJQ2";
+            this.btnJQ2.Size = new System.Drawing.Size(75, 23);
+            this.btnJQ2.TabIndex = 3;
+            this.btnJQ2.Text = "下样件夹紧";
+            this.btnJQ2.UseVisualStyleBackColor = true;
             // 
-            // button6
+            // btnZq3b
             // 
-            this.button6.Location = new System.Drawing.Point(114, 86);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 5;
-            this.button6.Text = "抓取上样件";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btnZq3b.Location = new System.Drawing.Point(205, 33);
+            this.btnZq3b.Name = "btnZq3b";
+            this.btnZq3b.Size = new System.Drawing.Size(75, 23);
+            this.btnZq3b.TabIndex = 2;
+            this.btnZq3b.Text = "抓取下样件";
+            this.btnZq3b.UseVisualStyleBackColor = true;
             // 
-            // button7
+            // btnReturn1
             // 
-            this.button7.Location = new System.Drawing.Point(205, 86);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(75, 23);
-            this.button7.TabIndex = 6;
-            this.button7.Text = "上样件夹紧";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btnReturn1.Location = new System.Drawing.Point(114, 33);
+            this.btnReturn1.Name = "btnReturn1";
+            this.btnReturn1.Size = new System.Drawing.Size(75, 23);
+            this.btnReturn1.TabIndex = 1;
+            this.btnReturn1.Text = "返回";
+            this.btnReturn1.UseVisualStyleBackColor = true;
             // 
-            // button8
+            // btnzq1b
             // 
-            this.button8.Location = new System.Drawing.Point(296, 86);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(75, 23);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "上样件返回";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btnzq1b.Location = new System.Drawing.Point(22, 33);
+            this.btnzq1b.Name = "btnzq1b";
+            this.btnzq1b.Size = new System.Drawing.Size(75, 23);
+            this.btnzq1b.TabIndex = 0;
+            this.btnzq1b.Text = "抓取样件";
+            this.btnzq1b.UseVisualStyleBackColor = true;
+            this.btnzq1b.Click += new System.EventHandler(this.btnzq1b_Click);
             // 
-            // button9
+            // btnTC
             // 
-            this.button9.Location = new System.Drawing.Point(22, 32);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(75, 23);
-            this.button9.TabIndex = 8;
-            this.button9.Text = "上夹钳闭合";
-            this.button9.UseVisualStyleBackColor = true;
+            this.btnTC.Location = new System.Drawing.Point(22, 32);
+            this.btnTC.Name = "btnTC";
+            this.btnTC.Size = new System.Drawing.Size(75, 23);
+            this.btnTC.TabIndex = 8;
+            this.btnTC.Text = "上夹钳闭合";
+            this.btnTC.UseVisualStyleBackColor = true;
             // 
-            // button10
+            // btnLC
             // 
-            this.button10.Location = new System.Drawing.Point(114, 32);
-            this.button10.Name = "button10";
-            this.button10.Size = new System.Drawing.Size(75, 23);
-            this.button10.TabIndex = 9;
-            this.button10.Text = "下夹钳闭合";
-            this.button10.UseVisualStyleBackColor = true;
+            this.btnLC.Location = new System.Drawing.Point(114, 32);
+            this.btnLC.Name = "btnLC";
+            this.btnLC.Size = new System.Drawing.Size(75, 23);
+            this.btnLC.TabIndex = 9;
+            this.btnLC.Text = "下夹钳闭合";
+            this.btnLC.UseVisualStyleBackColor = true;
             // 
-            // button11
+            // btnTO
             // 
-            this.button11.Location = new System.Drawing.Point(205, 32);
-            this.button11.Name = "button11";
-            this.button11.Size = new System.Drawing.Size(75, 23);
-            this.button11.TabIndex = 10;
-            this.button11.Text = "上夹钳打开";
-            this.button11.UseVisualStyleBackColor = true;
+            this.btnTO.Location = new System.Drawing.Point(205, 32);
+            this.btnTO.Name = "btnTO";
+            this.btnTO.Size = new System.Drawing.Size(75, 23);
+            this.btnTO.TabIndex = 10;
+            this.btnTO.Text = "上夹钳打开";
+            this.btnTO.UseVisualStyleBackColor = true;
             // 
-            // button12
+            // btnLO
             // 
-            this.button12.Location = new System.Drawing.Point(296, 32);
-            this.button12.Name = "button12";
-            this.button12.Size = new System.Drawing.Size(75, 23);
-            this.button12.TabIndex = 11;
-            this.button12.Text = "下夹钳打开";
-            this.button12.UseVisualStyleBackColor = true;
+            this.btnLO.Location = new System.Drawing.Point(296, 32);
+            this.btnLO.Name = "btnLO";
+            this.btnLO.Size = new System.Drawing.Size(75, 23);
+            this.btnLO.TabIndex = 11;
+            this.btnLO.Text = "下夹钳打开";
+            this.btnLO.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.button12);
-            this.groupBox2.Controls.Add(this.button9);
-            this.groupBox2.Controls.Add(this.button11);
-            this.groupBox2.Controls.Add(this.button10);
+            this.groupBox2.Controls.Add(this.btnLO);
+            this.groupBox2.Controls.Add(this.btnTC);
+            this.groupBox2.Controls.Add(this.btnTO);
+            this.groupBox2.Controls.Add(this.btnLC);
             this.groupBox2.Location = new System.Drawing.Point(4, 142);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(383, 74);
@@ -219,28 +220,29 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.button13);
+            this.groupBox3.Controls.Add(this.btnExit);
             this.groupBox3.Location = new System.Drawing.Point(4, 223);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(383, 71);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "样件架指令";
+            this.groupBox3.Text = "模式选择";
             // 
-            // button13
+            // btnExit
             // 
-            this.button13.Location = new System.Drawing.Point(22, 30);
-            this.button13.Name = "button13";
-            this.button13.Size = new System.Drawing.Size(75, 23);
-            this.button13.TabIndex = 9;
-            this.button13.Text = "开始放样";
-            this.button13.UseVisualStyleBackColor = true;
+            this.btnExit.Location = new System.Drawing.Point(22, 30);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(75, 23);
+            this.btnExit.TabIndex = 9;
+            this.btnExit.Text = "退出窗口";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // FrmManualMode
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 305);
+            this.ClientSize = new System.Drawing.Size(404, 305);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -259,20 +261,20 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button9;
-        private System.Windows.Forms.Button button10;
-        private System.Windows.Forms.Button button11;
-        private System.Windows.Forms.Button button12;
+        private System.Windows.Forms.Button btnReturn2;
+        private System.Windows.Forms.Button btnJQ1;
+        private System.Windows.Forms.Button btnZq2b;
+        private System.Windows.Forms.Button btnReturn3;
+        private System.Windows.Forms.Button btnJQ2;
+        private System.Windows.Forms.Button btnZq3b;
+        private System.Windows.Forms.Button btnReturn1;
+        private System.Windows.Forms.Button btnzq1b;
+        private System.Windows.Forms.Button btnTC;
+        private System.Windows.Forms.Button btnLC;
+        private System.Windows.Forms.Button btnTO;
+        private System.Windows.Forms.Button btnLO;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Button button13;
+        private System.Windows.Forms.Button btnExit;
         }
     }

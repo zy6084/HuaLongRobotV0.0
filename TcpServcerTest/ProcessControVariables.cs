@@ -7,7 +7,7 @@ using System.Collections.Concurrent;
 
 namespace TcpServcerTest
     {
-    class ProgressControVariables
+    class ProcessControVariables
         {
         public ConcurrentDictionary<string, bool> SetKeyValue()
             {
@@ -37,7 +37,6 @@ namespace TcpServcerTest
             dic.TryAdd("拉力机准备就绪", false);
             dic.TryAdd("U型架升降到位", false);
             dic.TryAdd("开始试验", false);
-            dic.TryAdd("模拟试验", false);
             dic.TryAdd("试验完毕", false);
             dic.TryAdd("U型架正在移动", false);
             dic.TryAdd("U型架移动到位并停止", false);

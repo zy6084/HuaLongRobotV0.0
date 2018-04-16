@@ -20,7 +20,6 @@ using System.Text;
 using System.Threading;
 using System.Windows.Forms;
 using System.Linq;
-using System.Timers;
 using System.Data;
 using System.Data.OleDb;
 using System.Collections.Concurrent;
@@ -36,10 +35,11 @@ namespace TcpServcerTest
         static TcpClient clientCoder;
         PC2RobotConnection rd = new PC2RobotConnection();
         PC2PLCConnection pd = new PC2PLCConnection();
-        PC2CoderConnection cd = new PC2CoderConnection();
+        //PC2CoderConnection cd = new PC2CoderConnection();
         public delegate void UpdateDisplayDelegate(string _msg);//数据刷新委托
         public delegate void CheckStateControlDelegate(int[] _seq);//状态控制委托
         ConcurrentDictionary<string, bool> dic = new ConcurrentDictionary<string, bool>();
+        FrmManualMode frmMM = new FrmManualMode();
         public void UpdateDisplay(string msg)
         {
             txtLog.Text += DateTime.Now.ToString("yyyy/MM/dd HH:mm:ss   ") + msg + "\r\n";
@@ -57,8 +57,6 @@ namespace TcpServcerTest
         //}
         //数值变量
         string SampleLength = string.Empty; //样本长度
-        string SampleWidth = string.Empty; //样本宽度
-        string SampleHeight = string.Empty; //样本厚度
         string SampleDiameter = string.Empty;
 
         //Robot状态标记
@@ -111,8 +109,8 @@ namespace TcpServcerTest
 
         MouseHook mh;
 
-        System.Timers.Timer timer = new System.Timers.Timer(4000);
         FileLogFactory flf = new FileLogFactory();
+        
         ILogger log = null;
 
         IPConfig ipC = new IPConfig();
@@ -128,7 +126,8 @@ namespace TcpServcerTest
             try
             {
                 InitializeComponent();
-                dic = new ProgressControVariables().SetKeyValue();
+                dic = new ProcessControVariables().SetKeyValue();
+                dic["自动模式选择"] = true;
                 LogFactory.Assign(new ConsoleLogFactory());
                 // 异步通讯初始化 端口10001 编码UTF8
                 server = new AsyncTcpServer(10001);
@@ -146,8 +145,6 @@ namespace TcpServcerTest
                 server.DatagramReceived += new EventHandler<TcpDatagramReceivedEventArgs<byte[]>>(server_DatagramReceived);
                 // 启动服务程序
                 server.Start();
-                timer.Elapsed += new System.Timers.ElapsedEventHandler(timer_Elapsed);
-                timer2.Elapsed += new System.Timers.ElapsedEventHandler(timer2_Elapsed);
             }
             catch (Exception ex) { log.Exception(ex); }
         }
@@ -162,9 +159,55 @@ namespace TcpServcerTest
                 if (ClientIP.Address.ToString() == Properties.Settings.Default.拉力机PLC端) clientCoder = e.TcpClient;
                 if (ClientIP.Address.ToString() == Properties.Settings.Default.Robot端) clientRobot = e.TcpClient;
                 LogRefresh(ipC.iPConfig[ClientIP.Address.ToString()] + e.TcpClient.Client.RemoteEndPoint.ToString() + "  has connected.", null);
+                frmMM.ManualOperationOrders += FrmMM_ManualOperationOrders;
             }
             catch (Exception ex) { log.Exception(ex); }
         }
+
+        private void FrmMM_ManualOperationOrders(object sender, OrderTypeEventArgs e)
+            {
+            switch (e.orderName)
+                {
+                case "zq1b":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ1B));
+                    break;
+                case "return1":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return1));
+                    break;
+                case "zq2b":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ2B));
+                    break;
+                case "return2":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return2));
+                    break;
+                case "zq3b":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ3B));
+                    break;
+                case "return3":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return3));
+                    break;
+                case "jq1":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ1));
+                    break;
+                case "jq2":
+                    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ2));
+                    break;
+                case "TopCaliperClamp":
+                    MsgSend(clientCoder, new byte[] { 0x01, 0x00 });
+                    break;
+                case "LowCaliperClamp":
+                    MsgSend(clientRobot, new byte[] { 0x02, 0x00 });
+                    break;
+                case "TopCaliperOpen":
+                    MsgSend(clientRobot, new byte[] { 0x00, 0x40 });
+                    break;
+                case "LowCaliperOpen":
+                    MsgSend(clientRobot, new byte[] { 0x00, 0x80 });
+                    break;
+                default:
+                    break;
+                }
+            }
         #endregion
 
         #region 客户端断开事件
@@ -191,46 +234,34 @@ namespace TcpServcerTest
                         case Params.PLC2PCCommandType.Ready:
                             dic["上夹钳闭合"] = false;
                             dic["下夹钳闭合"] = false;
-                            dic["上夹钳闭合"] = false;
-                            dic["上夹钳闭合"] = false;
-                            PLCTopCaliperClamp = false;
-                            PLCLowCaliperClamp = false;
+                            dic["批次试验完成"] = false;
+                            //PLCTopCaliperClamp = false;
+                            //PLCLowCaliperClamp = false;
                             //PLCDoStatus = false;
                             //PLCCompleteStatus = false;
                             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.Active));
                             tsbAdd_Click(null, null);
-                            //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.Active));//////////////////////////////////////////////////////////////////////////////////////////////
                             break;
                         case Params.PLC2PCCommandType.Operation:
                             break;
                         case Params.PLC2PCCommandType.DataSend:
-                            SampleLength = CommonFunction.byteToHexString(e.Datagram).Substring(2, 4);
-                            SampleWidth = CommonFunction.byteToHexString(e.Datagram).Substring(6, 4);
-                            SampleHeight = CommonFunction.byteToHexString(e.Datagram).Substring(10, 4);
-
-                            PLCTopCaliperClamp = false;
-                            PLCLowCaliperClamp = false;
+                            dic["上夹钳闭合"] = false;
+                            dic["下夹钳闭合"] = false;
+                            dic["批次试验完成"] = false;
                             //PLCDoStatus = false;
                             //PLCCompleteStatus = false;
                             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.DataFeedBack));
-                            //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeight));//////////////////////////////////////////////////////////////////////////////////////////////
-                            if (!PlatformStop)
-                                timer.Start();
                             break;
                         case Params.PLC2PCCommandType.CatchSample:
                             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.WaitKey));
-                            if (RobotReady && !RobotZq1b && PlatformHeightDone && !PLCSampleComplete)
+                            if (dic["Robot就绪"] && !dic["从样件架接料并夹持"] && dic["U型架升降到位"] && !dic["批次试验完毕"])
                             {
                                 MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ1B));
-                                RobotZq1b = true;
-                                //MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.Finish));
+                                dic["从样件架接料并夹持"] = true;
                             }
                             break;
                         case Params.PLC2PCCommandType.Complete:
-                            PLCSampleComplete = true; //该批次实验完毕
-                            //MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.Complete));
-
-                            //isSysBegin = false;
+                            dic["批次试验完毕"] = true; //该批次实验完毕
                             break;
                         case Params.PLC2PCCommandType.UrgencyStop:
                             break;
@@ -248,7 +279,7 @@ namespace TcpServcerTest
                 #region 拉力机PLC端
                 else if (e.TcpClient == clientCoder)
                 {
-                    if (isSysBegin) //系统开始运行
+                    if (dic["系统开始运行"]) //系统开始运行
                     {
                         
                         ss = ma.StatusAnalysis(e);
@@ -258,7 +289,7 @@ namespace TcpServcerTest
                             MouseMovementControl(Params.MouseMovementType.ToStop);
                             MessageBox.Show("拉力机移动到达上限位，请确认系统状态！");
                         }
-                        if (Testing && TestingFinish && MovingDone)
+                        if (dic["开始试验"] && dic["试验完毕"] && dic["拉断后U型架抬升完成"])
                         {
                             if (positionFlag == 1)
                                 {
@@ -272,28 +303,27 @@ namespace TcpServcerTest
                                 Thread.Sleep(1000);
                                 MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ3B));
                                 }
-                            //MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ3B));
                         }
-                        if (RobotFeedBack1flag && !RobotZq2b && Testing && TestingFinish && MovingDone) //获取上升高度，命令机器人抓取
+                        if ( !dic["样件上半段下料至夹取位"] && dic["开始试验"] && dic["试验完毕"] && dic["拉断后U型架抬升完成"]) //获取上升高度，命令机器人抓取
                         {
                             if ((positionFlag==1&& RobotFeedBack3flag)||positionFlag==3)
                                 {
-                                if (!isHeightDown)
+                                if (!dic["U型架正在下降"])
                                     {
                                     if (!ss.isPlatformMoving) MouseMovementControl(Params.MouseMovementType.ToDown);
-                                    else isHeightDown = true;
+                                    else dic["U型架正在下降"] = true;
                                     }
                                 for (; ss.HeightValue < 800;)
                                     {
                                     MouseMovementControl(Params.MouseMovementType.ToStop);
                                     //tsbRead_Click(null, null);
-                                    DownMovingDone = true;
+                                    dic["U型架下降到位"] = true;
                                     break;
                                     }
                                 }
                            
-                            if (DownMovingDone)
-                            {
+                            if (dic["U型架下降到位"])
+                                {
                                 if (positionFlag!=0)
                                     {
                                     if (positionFlag == 1 || positionFlag == 3)
@@ -303,7 +333,7 @@ namespace TcpServcerTest
                                         Thread.Sleep(1000);
                                         MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ2B));
                                         }
-                                    RobotZq2b = true;
+                                    dic["样件上半段下料至夹取位"] = true;
                                     }
                                 else
                                     {
@@ -312,93 +342,35 @@ namespace TcpServcerTest
                                     }
                             }
                         }
-                        else if (!RobotFeedBack1flag && !PlatformIniDone) //初始化
+                        else if (!dic["放入拉力机并返回反馈"] && !dic["拉力机准备就绪"]) //初始化
                         {
-                            #region 初始化逻辑
-                            ////调整夹钳
-                            //if (ss.isLowCaliperClamp)
-                            //{
-                            //    //byte[] sendbt = new byte[] { 0xFF, 0x02, 0x7F };
-                            //    //MsgSend(clientCoder, sendbt);
-                            //    MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperOpen));
-                            //}
-                            //if (!ss.isLowCaliperClamp) isLowCaliperClamp = true;
-                            //if (ss.isTopCaliperClamp && isLowCaliperClamp)
-                            //{
-                            //    //byte[] sendbt = new byte[] { 0xFF, 0x01, 0x7F };
-                            //    //MsgSend(clientCoder, sendbt);
-                            //    MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperOpen));
-                            //}
-                            //if (!ss.isTopCaliperClamp) isTopCaliperClamp = true;
-                            ////调整上台高度
-                            //if ((ss.HeightValue > 805) || (ss.HeightValue < 795))
-                            //{
-                            //    if (isLowCaliperClamp && isTopCaliperClamp)
-                            //    {
-                            //        if (ss.HeightValue > 805)//下降
-                            //        {
-                            //            if (!PlatformUp)
-                            //            {
-                            //                if (!ss.isPlatformMoving) MouseMovementControl(Params.MouseMovementType.ToDown);
-                            //                else PlatformUp = true;
-                            //            }
-                            //        }
-                            //        if (ss.HeightValue < 795)//上升
-                            //        {
-                            //            if (!PlatformDown)
-                            //            {
-                            //                if (!ss.isPlatformMoving) MouseMovementControl(Params.MouseMovementType.ToUp);
-                            //                else PlatformDown = true;
-                            //            }
-                            //        }
-                            //        //if ((795 < ss.HeightValue) && (ss.HeightValue < 805))//停止
-                            //        //{
-                            //        //    MouseMovementControl(Params.MouseMovementType.ToStop);
-                            //        //    //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeightDone));
-                            //        //    PlatformHeightDone = true;
-                            //        //    PlatformIniDone = true;
-                            //        //    MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.CatchSampleRequest));
-                            //        //    tsbAdd_Click(null, null);
-                            //        //}
-                            //    }
-                            //}
-                            //else
-                            //{
-                            //    MouseMovementControl(Params.MouseMovementType.ToStop);
-                            //    PlatformHeightDone = true;
-                            //    PlatformIniDone = true;
-                            //    MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.CatchSampleRequest));
-                            //    tsbAdd_Click(null, null);
-                            //}
-                            #endregion
-
                               #region 初始化逻辑修改：防止上下夹钳先后打开造成死机的情况发生，修改为先打开下夹钳，然后下降U型台，最后打开上夹钳的过程
                             //调整下夹钳
                             if (ss.isLowCaliperClamp)//下夹钳关闭
                             {
                                 MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperOpen));
                             }
-                            if (!ss.isLowCaliperClamp) isLowCaliperClamp = true;//下夹钳打开
+                            if (!ss.isLowCaliperClamp) dic["下夹钳打开"] = true;//下夹钳打开
 
                             //调整上台高度
                             if ((ss.HeightValue > 805) || (ss.HeightValue < 795))
                             {
-                                if (isLowCaliperClamp)//下夹钳已打开完成
+                                if (dic["下夹钳打开"])//下夹钳已打开完成
                                 {
                                     if (ss.HeightValue > 805)//下降
                                     {
-                                        if (!PlatformUp)
+                                        if (!dic["U型架上升命令触发"])
                                         {
                                             if (!ss.isPlatformMoving) MouseMovementControl(Params.MouseMovementType.ToDown);
-                                            else PlatformUp = true;
+                                            else dic["U型架上升命令触发"] = true;
                                         }
                                     }
                                     if (ss.HeightValue < 795)//上升
                                     {
-                                        if (!PlatformDown)
+                                        if (!dic["U型架下降命令触发"])
                                         {
                                             if (!ss.isPlatformMoving) MouseMovementControl(Params.MouseMovementType.ToUp);
-                                            else PlatformDown = true;
+                                            else dic["U型架下降命令触发"] = true;
                                         }
                                     }
                                 }
@@ -406,101 +378,82 @@ namespace TcpServcerTest
                             else
                             {
                                 MouseMovementControl(Params.MouseMovementType.ToStop);
-                                PlatformHeightDone = true;
+                                dic["U型架升降到位"] = true;
                             }
 
                             //调整上夹钳
-                            if (ss.isTopCaliperClamp && isLowCaliperClamp && PlatformHeightDone)
+                            if (ss.isTopCaliperClamp && dic["下夹钳打开"] && dic["U型架升降到位"])
                             {
                                 MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperOpen));
                             }
-                            if (!ss.isTopCaliperClamp) isTopCaliperClamp = true;
+                            if (!ss.isTopCaliperClamp) dic["上夹钳打开"] = true;
 
                             //全部调整完毕以后，执行后续过程
-                            if (isTopCaliperClamp && isLowCaliperClamp && PlatformHeightDone)
+                            if (dic["上夹钳打开"] && dic["下夹钳打开"] && dic["U型架升降到位"])
                             {
                                 MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.CatchSampleRequest));
                                 tsbAdd_Click(null, null);
-                                PlatformIniDone = true;
+                                dic["拉力机准备就绪"] = true;
                             }
                             #endregion
                         }
-                        else if (RobotZq1f && !MovingDone) //机器人抓取样件完成，送入拉力机位置
+                        else if (dic["样件架样件夹持反馈"] && !dic["拉断后U型架抬升完成"]) //机器人抓取样件完成，送入拉力机位置
                         {
                             if (ss.isTopCaliperClamp)
                             { Thread.Sleep(3000); MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return1)); }//上夹钳闭合，机器人退回
                             else MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperClamp));
-                            if (RobotFeedBack1flag)//机器人放入完成
+                            if (dic["放入拉力机并返回反馈"])//机器人放入完成
                             {
                                 if (!ss.isLowCaliperClamp) MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperClamp));
-                                if (ss.isLowCaliperClamp && ss.isTopCaliperClamp && !Testing) //开始实验
+                                if (ss.isLowCaliperClamp && ss.isTopCaliperClamp && !dic["开始试验"]) //开始试验
                                 {
                                     if (Properties.Settings.Default.类别 == "1")
                                     {
-                                        //Testing = true; //lbErrorInfo.Text = "点击开始实验！"; 
-                                        //实验版本
+                                        //试验版本
                                         MouseMovementControl(Params.MouseMovementType.ToStart);
-                                        if (ss.isPlatformMoving) Testing = true;
+                                        if (ss.isPlatformMoving) dic["开始试验"] = true;
                                     }
                                     else
                                     {
-                                        //自动拉伸版本
-                                        if (!isTestLens)
+                                        //模拟测试版本
+                                        if (!dic["开始试验"])
                                             MouseMovementControl(Params.MouseMovementType.ToUp);
                                         if (ss.isPlatformMoving)
                                         {
-                                            isTestLens = true;
+                                            dic["开始试验"] = true;
                                             if (ss.HeightValue > 830)
                                             {
                                                 MouseMovementControl(Params.MouseMovementType.ToStop);
-                                                Testing = true;
-
                                             }
                                         }
                                     }
                                 }
-                                if (Testing)
+                                if (dic["开始试验"])
                                 {
                                     if (ss.isPlatformMoving)
-                                        isMoving = true;
+                                        dic["U型架正在移动"] = true;
                                     else
                                     {
                                         i++;
                                         if (i > 5)
-                                            isStop = true;
+                                            dic["U型架移动到位并停止"] = true;
                                     }
-                                    MessageBox.Show("请选择机器人动作方式", "模式选择",  MessageBoxButtons.YesNoCancel);
-                                    switch (DialogResult)
-                                        {
-                                        case DialogResult.Yes:
-                                            positionFlag = 1;
-                                            break;
-                                        case DialogResult.No:
-                                            positionFlag = 2;
-                                            break;
-                                        case DialogResult.Cancel:
-                                            positionFlag = 3;
-                                            break;
-                                        }
-                                    }
+                                }
                             }
-                            if (RobotFeedBack1flag && isMoving && isStop)//机器人放入样件完成，已经移动且停止（实验完毕）
-                            {
-                                if (!isHeightGet)
+                            if (dic["放入拉力机并返回反馈"] && dic["U型架正在移动"] && dic["U型架移动到位并停止"])//机器人放入样件完成，已经移动且停止（试验完毕）
+                                {
+                                if (!dic["U型架当前高度获得"])
                                 {
                                     V_Height = ss.HeightValue;
-                                    isHeightGet = true;
-                                    //MouseMovementControl(Params.MouseMovementType.ToUp);
+                                    dic["U型架当前高度获得"] = true;
                                 }
-                                //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.CompleteStatus) });
-                                //PLCCompleteStatus = true;
-                                TestingFinish = true;
+                                dic["试验完毕"] = true;
                                 if (Properties.Settings.Default.类别=="1")
                                     {
                                     MouseMovementControl(Params.MouseMovementType.ToSave);
                                     Thread.Sleep(2000);
                                     tsbRead_Click(null, null);
-                                    if (saveComplete)
+                                    if (dic["试验数据保存完成"])
                                         {
                                         fracturePositionResult = dt.Rows[0][53].ToString();//“需要根据数据库文件就行索引修改”
                                         switch (fracturePositionResult)
@@ -517,64 +470,25 @@ namespace TcpServcerTest
                                             }
                                         }
                                     }                            
-                                MovingDone = true;
-                                //if (Testing && TestingFinish && PLCCompleteStatus && isStop)
-                                //{
-                                //继续向上移动一段距离，方便取出断裂的样件，避免碰撞
-                                //MouseMovementControl(Params.MouseMovementType.ToUp);
-                                //Thread.Sleep(10000);
-
-                                //Real-Time height>fracturedHeight+videoExtenderPreset
-                                //for (; ss.HeightValue > V_Height +Properties.Settings.Default.fracturedUpDisplacement; )
-                                //{
-                                //    MouseMovementControl(Params.MouseMovementType.ToStop);
-                                //    Thread.Sleep(1000);
-                                //    MouseMovementControl(Params.MouseMovementType.ToSave);
-                                //    Thread.Sleep(2000);
-                                //    tsbRead_Click(null, null);
-                                //    MovingDone = true;
-                                //    break;
-                                //}
-                                //}
+                                dic["拉断后U型架抬升完成"] = true;       
                                 }
                         }
 
-                        if (RobotZq2f && !ss.isTopCaliperClamp) //机器人取出上断裂样件后返回
+                        if (dic["样件上半段下料至夹取位反馈"] && !ss.isTopCaliperClamp) //机器人取出上断裂样件后返回
                             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return2));
                         if (RobotZq3f && !ss.isLowCaliperClamp) //机器人取出下断裂样件后返回
                             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Return3));
-                        if (RobotDW1)
-                        {
-                            //if (ss.isTopCaliperClamp)
-                            //{
-                            //    MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperOpen));
-                            //    this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperOpen) });
-                            //}
-                            //else
-                            //{
-                            //    //Thread.Sleep(TimeSpan.FromMilliseconds(double.Parse(textEdit1.Text)));
-                            //    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ1));
-                            //}
+                        if (dic["样件上半段夹取位到达"])
+                        {  
                             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ1));
                             if (ss.isTopCaliperClamp)
                             {
                                 Thread.Sleep(10000);
                                 MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperOpen));
-                                //BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperOpen) });
                             }
                         }
-                        if (RobotDW2)
-                        {
-                            //if (ss.isLowCaliperClamp)
-                            //{
-                            //    MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperOpen));
-                            //    this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperOpen) });
-                            //}
-                            //else
-                            //{
-                            //    //Thread.Sleep(TimeSpan.FromMilliseconds(double.Parse(textEdit1.Text)));
-                            //    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ2));
-                            //}
+                        if (dic["样件下半段夹取位到达"])
+                        {                          
                             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ2));
                             if (ss.isLowCaliperClamp)
                             {
@@ -607,121 +521,71 @@ namespace TcpServcerTest
                     {
                         case Params.Robot2PCCommandType.Connection:
                             MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Active));
-                            RobotFeedBack3flag = false;
-                            RobotFinishflag = false;
-                            RobotReady = false;
-                            RobotZq1f = false;
-                            RobotZq2f = false;
-                            RobotZq3f = false;
-                            RobotZq1b = false;
-                            RobotZq2b = false;
-                            RobotZq3b = false;
-                            RobotFeedBack1flag = false;
-                            RobotFeedBack3flag = false;
+                            dic["样件下半段下料完成反馈"] = false;
+                            dic["Rotbot就绪"] = false;
+                            dic["样件架样件夹持反馈"] = false;
+                            dic["样件上半段下料至夹取位反馈"] = false;
+                            dic["样件下半段下料至夹取位反馈"] = false;
+                            dic["从样件架接料并夹持"] = false;
+                            dic["样件上半段下料至夹取位"] = false;
+                            dic["样件下半段下料至夹取位"] = false;
+                            dic["样件下半段下料至夹取位"] = false;
+                            dic["样件下半段下料完成反馈"] = false;
+                            dic["试验数据保存完成"] = false;
+                            dic["试验完毕"] = false;
+                            dic["U型架移动到位并停止"] = false;
+                            dic["拉断后U型架抬升完成"] = false;
+                            dic["开始试验"] = false;
+                            dic["拉力机准备就绪"] = false;
+                            dic["样件上半段夹取位到达"] = false;
+                            dic["样件下半段夹取位到达"] = false;
+                            dic["U型架当前高度获得"] = false;
+                            dic["U型架正在下降"] = false;
+                            dic["U型架下降到位"] = false;
                             positionFlag = 0;
-                            saveComplete = false;
-                            //RobotReturn1 = false;
                             rd.AxisValue = "0.0";
-                            TestingFinish = false;//实验完毕
-                            isMoving = false;//上台开始移动
-                            isStop = false;//上开静止
-                            MovingDone = false;//拉断后向上移动5秒完成
-                            Testing = false;
-                            PlatformIniDone = false;
-                            RobotDW1 = false;
-                            RobotDW2 = false;
-                            isHeightGet = false;
-                            isHeightDown = false;
-                            isTestLens = false;
-                            DownMovingDone = false;
                             i = 0;
                             break;
                         case Params.Robot2PCCommandType.Ready:
-                            RobotReady = true;
+                            dic["Rotbot就绪"] = true;
 
                             //MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ1B));
                             break;
                         case Params.Robot2PCCommandType.ZQ1F:
-                            RobotZq1f = true;
-                            if (RobotZq1f)
+                            dic["样件架样件夹持反馈"] = true;
+                            if (dic["样件架样件夹持反馈"])
                             {
                                 MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.Finish));
-                                //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.TopCaliperClamp));//////////////////////////////////////////////////////////////////////////////////////////////
-                                //sendbt = new byte[] { 0xFF, 0x04, 0x7F };
-                                //MsgSend(clientCoder, sendbt);
                                 MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperClamp));
-                                //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeightDone));//////////////////////////////////////////////////////////////////////////////////////////////
-
-                                //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperClamp) });
-                                PlatformUp = false;
-                                PlatformDown = false;
-                                PlatformHeightDone = false;
+                                dic["U型架上升命令触发"] = false;
+                                dic["U型架下降命令触发"] = false;
+                                dic["U型架升降到位"] = false;
                             }
                             break;
                         case Params.Robot2PCCommandType.FeedBack1:
                             Thread.Sleep(20000);
-                            RobotFeedBack1flag = true;
-                            //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.LowCaliperClamp));//////////////////////////////////////////////////////////////////////////////////////////////
-                            //sendbt = new byte[] { 0xFF, 0x00, 0x7F };
-                            //MsgSend(clientCoder, sendbt);
+                            dic["U型架升降到位"] = true;
                             MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperClamp));
-                            //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperClamp) });
-                            //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeight));
                             break;
                         case Params.Robot2PCCommandType.DW1:
-                            //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.TopCaliperOpen));//////////////////////////////////////////////////////////////////////////////////////////////
-                            //sendbt = new byte[] { 0xFF, 0x01, 0x7F };
-                            //MsgSend(clientCoder, sendbt);
-                            RobotDW1 = true;
-                            //while (ss.isTopCaliperClamp)
-                            //{
-                            //    MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.TopCaliperOpen));
-                            //    Thread.Sleep(500);
-                            //}
-                            //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperOpen) });
-                            //Thread.Sleep(TimeSpan.FromMilliseconds(double.Parse(textEdit1.Text)));
-                            //MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ1));
+                            dic["样件上半段夹取位到达"] = true;                       
                             break;
                         case Params.Robot2PCCommandType.DW2:
-                            //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.LowCaliperOpen));//////////////////////////////////////////////////////////////////////////////////////////////
-                            //sendbt = new byte[] { 0xFF, 0x11, 0x7F };
-                            //MsgSend(clientCoder, sendbt);
-                            RobotDW2 = true;
-                            //while (ss.isLowCaliperClamp)
-                            //{
-                            //    MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.LowCaliperOpen));
-                            //    Thread.Sleep(500);
-                            //}
-                            //this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperOpen) });
-                            //Thread.Sleep(TimeSpan.FromMilliseconds(double.Parse(textEdit1.Text)));
-                            //MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.JQ2));
+                            dic["样件下半段夹取位到达"] = true;                        
                             break;
                         case Params.Robot2PCCommandType.ZQ2F:
-                            RobotZq2f = true;
-                            //if (RobotZq2f)
-                            //{
-                            //    MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.TopCaliperOpen));
-                            //    this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.TopCaliperOpen) });
-                            //}
+                            dic["样件上半段下料至夹取位反馈"] = true;                         
                             break;
-                        //case Params.Robot2PCCommandType.FeedBack3:
-                        //    MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.ZQ3B));
-                        //    break;
                         case Params.Robot2PCCommandType.ZQ3F:
-                            RobotZq3f = true;
-                            //if (RobotZq3f)
-                            //{
-                            //    MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.LowCaliperOpen));
-                            //    this.BeginInvoke(new CheckStateControlDelegate(CheckStateControl), new object[] { PlatformStatusClassifier.StatusClassifier(Params.PlatformStatus.LowCaliperOpen) });
-                            //}
+                            dic["样件下半段下料至夹取位反馈"] = true;                      
                             break;
                         case Params.Robot2PCCommandType.FeedBack3:
-                            RobotFeedBack3flag = true;
+                            dic["样件下半段下料完成反馈"] = true;
                             break;
                         case Params.Robot2PCCommandType.Finish:
-                            RobotFinishflag = true;
-                            if (RobotFeedBack3flag && RobotFinishflag)
-                            {
+                            dic["全部下料完成"] = true;
+                            if (dic["样件上半段下料完成反馈"] && dic["全部下料完成"])
+                                {
                                 MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.Break));
                             }
                             break;
@@ -803,14 +667,6 @@ namespace TcpServcerTest
         {
             mh.UnHook();
         }
-        private void timer_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            //Thread.CurrentThread.IsBackground = false;
-            //if (!PlatformStop)
-            //{
-            //    MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.GrabHeight));//////////////////////////////////////////////////////////////////////////////////////////////
-            //}
-        }
         #endregion
 
         #region 读取实验结果
@@ -828,17 +684,6 @@ namespace TcpServcerTest
         {
             try
             {
-                //FileStream fs = new FileStream(@"E:\20171208-1138.dat", FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
-                //StreamReader sr = new StreamReader(fs, System.Text.Encoding.Default);
-
-                //ftl = GetLatestFileTimeInfo(@"E:\", ".dat");
-
-                //string[] readContentInString = File.ReadAllLines(ftl[0].FileName, Encoding.GetEncoding("GBK"));
-                //readContentInString.Aggregate(string.Empty, (result, current) => result += current);
-                //foreach (var item in readContentInString) strList.Add(item);
-                //sr.Close();
-                //fs.Close();
-
                 bool flag = false;
                 dt = ReadAllData("拉伸", @"C:\Program Files (x86)\万能试验软件-CTS600-中文版\database\testdata.mdb", ref flag);
             }
@@ -850,26 +695,7 @@ namespace TcpServcerTest
         {
             try
             {
-                //string batchNo = strList[0].Split('"')[1];
-                //int RecordNum = Int16.Parse(strList[5].Split(',')[0]);
                 List<ResultsStructure> ResultList = new List<ResultsStructure>();
-                //for (int i = 0; i < RecordNum; i++)
-                //{
-                //    ResultsStructure rs = new ResultsStructure();
-                //    rs.BatchNo = batchNo;
-                //    rs.BatchSeq = i;
-                //    rs.FmValue = Math.Round(double.Parse(strList[22 + 31 * i].Split(',')[0]) / 1000, 1);
-                //    rs.FeHValue = Math.Round(double.Parse(strList[23 + 31 * i].Split(',')[0]) / 1000, 1);
-                //    rs.FeLValue = Math.Round(double.Parse(strList[24 + 31 * i].Split(',')[0]) / 1000, 1);
-                //    rs.LuValue = double.Parse(strList[32 + 31 * i].Split(',')[0]);
-                //    rs.Fb02Value = Math.Round(double.Parse(strList[25 + 31 * i].Split(',')[0]) / 1000, 1);
-                //    rs.RmValue = Math.Round(double.Parse(strList[22 + 31 * i].Split(',')[0]) / 1000, 1) / Math.Round(Math.PI * (0.022 / 2) * (0.022 / 2), 6) / 1000;
-                //    rs.Rp02Value = Math.Round(double.Parse(strList[25 + 31 * i].Split(',')[0]) / 1000, 1) / Math.Round(Math.PI * (0.022 / 2) * (0.022 / 2), 6) / 1000;
-                //    ResultList.Add(rs);
-                //    //Rm(抗拉强度) = Fm/横截面积
-                //    //Rp(规定塑性延伸强度) = 引伸计标距Le百分率时对应的应力 Fp(0.2)/横截面积
-                //    //R(应力) = 任意时刻的力/原始横截面积
-                //}
 
                 ResultsStructure rs = new ResultsStructure();
                 rs.BatchNo = dt.Rows[0][0].ToString();
@@ -880,16 +706,12 @@ namespace TcpServcerTest
 
 
                 rs.RmValue = float.Parse(dt.Rows[0][29].ToString());
-                //rs.Rp02Value = float.Parse(ddt.Rows[0][32].ToString());
                 rs.A = double.Parse(dt.Rows[0][39].ToString());
                 rs.FracturePosition = dt.Rows[0][53].ToString();
                 ResultList.Add(rs);
-                //Rm(抗拉强度) = Fm/横截面积
-                //Rp(规定塑性延伸强度) = 引伸计标距Le百分率时对应的应力 Fp(0.2)/横截面积
-                //R(应力) = 任意时刻的力/原始横截面积
 
                 this.bindingSource1.DataSource = ResultList;
-                saveComplete = true;
+                dic["试验数据保存完成"] = true;
             }
             catch (Exception ex) { throw ex; }
         }
@@ -954,9 +776,8 @@ namespace TcpServcerTest
         #region 开始实验
         private void tsbStart_Click(object sender, EventArgs e)
         {
-            isSysBegin = true;
-            //PLCActive = false;
-            PLCSampleComplete = false;
+            dic["系统开始运行"] = true;
+            dic["批次试验完毕"] = false;
             MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.Complete));
             //MsgSend(clientCoder, cd.createCommand(Params.PC2CoderCommandType.Active));
         }
@@ -993,39 +814,6 @@ namespace TcpServcerTest
         #endregion
 
         #region 机器人动作单步测试命令
-        System.Timers.Timer timer2 = new System.Timers.Timer(17000);
-        int seq;
-        private void timer2_Elapsed(object sender, ElapsedEventArgs e)
-        {
-            if (seq > 6) seq = 0;
-            else
-            {
-                ButtonList[seq](null, null);
-                seq++;
-            }
-        }
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            //重复发送
-            //seq = 0;
-            //timer2.Start();
-            //positionFlag = 3;
-            //operationManual = true;
-            //Testing = true;
-            //TestingFinish = true;
-            //MovingDone = true;
-        }
-
-        private void simpleButton2_Click(object sender, EventArgs e)
-        {
-            //停止发送
-            //timer2.Stop();
-            //positionFlag = 2;
-            //operationManual = true;
-            //Testing = true;
-            //TestingFinish = true;
-            //MovingDone = true;
-            }
 
         List<System.EventHandler> ButtonList = new List<System.EventHandler>();
         #endregion
@@ -1097,26 +885,36 @@ namespace TcpServcerTest
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             MouseMovementControl(Params.MouseMovementType.ToSave);
-        }
-
-        private void simpleButton8_Click(object sender, EventArgs e)
-            {
-
-            }
+        }   
 
         private void btnManual_Click(object sender, EventArgs e)
             {
-
+            dic["自动模式选择"] = false;
+            btnManual.Enabled = false;
+            btnAuto.Enabled = true;
+            FrmManualMode frmMM = new FrmManualMode();
+            frmMM.Show();
             }
 
         private void btnAuto_Click(object sender, EventArgs e)
             {
-
+            btnAuto.Enabled = false;
+            btnManual.Enabled = true;
+            dic["自动模式选择"] = true;
             }
 
-        private void btnManual_Click_1(object sender, EventArgs e)
+        private void btnPause_Click(object sender, EventArgs e)
             {
-
+            dic["自动模式选择"] = false;
+            MsgSend(clientRobot, rd.createCommand(Params.PC2RobotCommandType.PS));
+            MsgSend(clientPLC, pd.createCommand(Params.PC2PLCCommandType.PS));
+            MsgSend(clientCoder, ma.CommandAnalysis(Params.PC2CoderCommandType.PS));
+            if (Testing&&!isStop)
+                {
+                MouseMovementControl(Params.MouseMovementType.ToStop);
+                dic["开始试验"] = false;
+                dic["U型架移动到位并停止"] = true;
+                }
             }
         }
 }
