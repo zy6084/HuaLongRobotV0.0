@@ -72,22 +72,7 @@ namespace TcpServcerTest
                         break;
                     case "M3":
                         sendStb.Append("m3");
-                        break;
-                    case "PS":
-                        sendStb.Append("ps");
-                        break;
-                    case "PR":
-                        sendStb.Append("pr");
-                        break;
-                    case "ES":
-                        sendStb.Append("es");
-                        break;
-                    case "ER":
-                        sendStb.Append("er");
-                        break;
-                    case "Manual":
-                        sendStb.Append("manual");
-                        break;
+                        break;    
                     }
                 return sendStb.ToString();
             }
@@ -135,22 +120,7 @@ namespace TcpServcerTest
                         break;
                     case "dw2":
                         rct = Params.Robot2PCCommandType.DW2;
-                        break;
-                    case "PSF":
-                        rct = Params.Robot2PCCommandType.PSF;
-                        break;
-                    case "PRF":
-                        rct = Params.Robot2PCCommandType.PRF;
-                        break;
-                    case "ESF":
-                        rct = Params.Robot2PCCommandType.ESF;
-                        break;
-                    case "ERF":
-                        rct = Params.Robot2PCCommandType.ERF;
-                        break;
-                    case "ManualFeedBack":
-                        rct = Params.Robot2PCCommandType.ManualFeedBack;
-                        break;
+                        break; 
                     default:
                         rct = Params.Robot2PCCommandType.Error;
                         break;

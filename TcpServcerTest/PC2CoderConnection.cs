@@ -49,18 +49,7 @@ namespace TcpServcerTest
                     case "GrabHeightDone":
                         sendbt = new byte[] { 0x04, 0x20 };
                         break;
-                    case "ER":
-                        sendbt = new byte[] { 0x00,0xA0};
-                        break;
-                    case "ES":
-                        sendbt = new byte[] { 0x00, 0x0A };
-                        break;
-                    case "PS":
-                        sendbt = new byte[] { 0x00, 0x0B };
-                        break;
-                    case "PR":
-                        sendbt = new byte[] { 0x00, 0xB0 };
-                        break;
+                 
                     }
                 return sendbt;
             }
@@ -118,12 +107,6 @@ namespace TcpServcerTest
                         break;
                     case "0049":
                         rct = Params.Coder2PCCommandType.LowCaliperOpen;
-                        break;
-                    case "00B1":
-                        rct = Params.Coder2PCCommandType.PRF;
-                        break;
-                    case "00A1":
-                        rct = Params.Coder2PCCommandType.ESF;
                         break;
                     default:
                         rct = Params.Coder2PCCommandType.Error;

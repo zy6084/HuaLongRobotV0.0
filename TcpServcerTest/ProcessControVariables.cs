@@ -54,8 +54,9 @@ namespace TcpServcerTest
             dic.TryAdd("暂停命令", false);
             dic.TryAdd("满足暂停复位", false);
             //模式选择
-            dic.TryAdd("自动模式选择", false);
             dic.TryAdd("机器人手动模式反馈", false);
+            dic.TryAdd("测试命令模式", false);
+            dic.TryAdd("暂停模式选择", false);
             return dic;
             }
         }

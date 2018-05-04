@@ -183,3 +183,6 @@ E:\项目资料\研发\技术文档\质量处拉力机机器人项目研发\HuaL
 E:\SourceCode\HuaLongRobotV0.0\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
 E:\SourceCode\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.exe
 E:\SourceCode\HuaLongRobotV0.0\TcpServcerTest\obj\Debug\TcpServcerTest.pdb
+E:\SourceCode\HuaLongRobotV0.1\TcpServcerTest\bin\Debug\TcpServcerTest.exe.config
+E:\SourceCode\HuaLongRobotV0.1\TcpServcerTest\obj\Debug\TcpServcerTest.exe
+E:\SourceCode\HuaLongRobotV0.1\TcpServcerTest\obj\Debug\TcpServcerTest.pdb

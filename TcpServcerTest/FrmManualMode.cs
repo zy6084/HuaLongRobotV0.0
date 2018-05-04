@@ -20,12 +20,16 @@ namespace TcpServcerTest
 
         protected virtual void OnOrderChanged(OrderTypeEventArgs e)
             {
-            ManualOperationOrders?.Invoke(this, e);
+            //ManualOperationOrders?.Invoke(this, e);
+            if (ManualOperationOrders!=null)
+                {
+                ManualOperationOrders.Invoke(this, e);
+                }
             }
 
         private void btnzq1b_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("ZQ1B"));
+            //OnOrderChanged(new OrderTypeEventArgs("ZQ1B"));
             }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -35,37 +39,37 @@ namespace TcpServcerTest
 
         private void btnReturn1_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("Return1"));
+            //OnOrderChanged(new OrderTypeEventArgs("Return1"));
             }
 
         private void btnZq3b_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("ZQ3B"));
+            //OnOrderChanged(new OrderTypeEventArgs("ZQ3B"));
             }
 
         private void btnJQ2_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("JQ2"));
+            //OnOrderChanged(new OrderTypeEventArgs("JQ2"));
             }
 
         private void btnReturn3_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("Return3"));
+            //OnOrderChanged(new OrderTypeEventArgs("Return3"));
             }
 
         private void btnZq2b_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("ZQ2B"));
+            //OnOrderChanged(new OrderTypeEventArgs("ZQ2B"));
             }
 
         private void btnJQ1_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("JQ1"));
+            //OnOrderChanged(new OrderTypeEventArgs("JQ1"));
             }
 
         private void btnReturn2_Click(object sender, EventArgs e)
             {
-            OnOrderChanged(new OrderTypeEventArgs("Return2"));
+            //OnOrderChanged(new OrderTypeEventArgs("Return2"));
             }
 
         private void btnTC_Click(object sender, EventArgs e)

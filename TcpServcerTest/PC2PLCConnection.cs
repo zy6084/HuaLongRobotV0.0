@@ -63,8 +63,11 @@ namespace TcpServcerTest
                     case "LowCaliperOpen":
                         sendbt = new byte[] { 0x00, 0x80 };
                         break;
-                    case "ER":
-                        sendbt = new byte[] { 0x00,0x0A};
+                    case "PS":
+                        sendbt = new byte[] { 0x04, 0x00 };
+                        break;
+                    case "PSR":
+                        sendbt = new byte[] {0x08,0x00 };
                         break;
                     }
                 return sendbt;
@@ -92,7 +95,7 @@ namespace TcpServcerTest
                         rct = Params.PLC2PCCommandType.Complete;
                         break;
                     case "0001":
-                        rct = Params.PLC2PCCommandType.UrgencyStop;
+                        rct = Params.PLC2PCCommandType.CoderERF;
                         break;
                     case "0002":
                         rct = Params.PLC2PCCommandType.ServoMotorError;
@@ -100,20 +103,32 @@ namespace TcpServcerTest
                     case "0004":
                         rct = Params.PLC2PCCommandType.MeasuerRrror;
                         break;
-                    case "000A":
+                    case "0080":
                         rct = Params.PLC2PCCommandType.CoderER;
                         break;
-                    case "000B":
+                    case "0100":
                         rct = Params.PLC2PCCommandType.PLCER;
                         break;
-                    case "000C":
+                    case "0200":
                         rct = Params.PLC2PCCommandType.RobotER;
                         break;
-                    case "000D":
+                    case "0400":
                         rct = Params.PLC2PCCommandType.IntrusionDetectionER;
                         break;
-                    case "000E":
+                    case "0800":
                         rct = Params.PLC2PCCommandType.DevER;
+                        break;
+                    case "1000":
+                        rct = Params.PLC2PCCommandType.PLCERF;
+                        break;
+                    case "2000":
+                        rct = Params.PLC2PCCommandType.RobotERF;
+                        break;
+                    case "4000":
+                        rct = Params.PLC2PCCommandType.IntrusionDetectionERF;
+                        break;
+                    case "8000":
+                        rct = Params.PLC2PCCommandType.DevERF;
                         break;
                     default:
                         rct = Params.PLC2PCCommandType.Error;
