@@ -17,6 +17,7 @@ namespace TcpServcerTest
                 {
                 FrmModeSelect ms = new FrmModeSelect();
                 ms.Show();
+                this.Dispose();
                 }
             }
 
