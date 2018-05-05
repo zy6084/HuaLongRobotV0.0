@@ -82,6 +82,7 @@
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.btnModeSelect = new System.Windows.Forms.ToolStripButton();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
@@ -141,7 +142,8 @@
             this.tsbStart,
             this.tsbRead,
             this.tsbSave,
-            this.tsbTest});
+            this.tsbTest,
+            this.btnModeSelect});
             this.toolStrip1.Location = new System.Drawing.Point(12, 12);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(882, 40);
@@ -188,7 +190,7 @@
             this.tsbSave.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.tsbSave.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.tsbSave.Name = "tsbSave";
-            this.tsbSave.Size = new System.Drawing.Size(89, 37);
+            this.tsbSave.Size = new System.Drawing.Size(87, 37);
             this.tsbSave.Text = "保存数据";
             this.tsbSave.Click += new System.EventHandler(this.tsbSave_Click);
             // 
@@ -788,6 +790,17 @@
             this.layoutControlItem11.TextToControlDistance = 0;
             this.layoutControlItem11.TextVisible = false;
             // 
+            // btnModeSelect
+            // 
+            this.btnModeSelect.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.btnModeSelect.Image = ((System.Drawing.Image)(resources.GetObject("btnModeSelect.Image")));
+            this.btnModeSelect.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.btnModeSelect.ImageTransparentColor = System.Drawing.Color.Transparent;
+            this.btnModeSelect.Name = "btnModeSelect";
+            this.btnModeSelect.Size = new System.Drawing.Size(111, 37);
+            this.btnModeSelect.Text = "试验模式选择";
+            this.btnModeSelect.Click += new System.EventHandler(this.btnModeSelect_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -896,5 +909,6 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
         private DevExpress.XtraEditors.SimpleButton btnPauseReset;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem11;
+        private System.Windows.Forms.ToolStripButton btnModeSelect;
         }
 }

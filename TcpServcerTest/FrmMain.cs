@@ -35,7 +35,6 @@ namespace TcpServcerTest
         static TcpClient clientCoder;
         PC2RobotConnection rd = new PC2RobotConnection();
         PC2PLCConnection pd = new PC2PLCConnection();
-        PC2CoderConnection cd = new PC2CoderConnection();
         public delegate void UpdateDisplayDelegate(string _msg);//数据刷新委托
         public delegate void CheckStateControlDelegate(int[] _seq);//流程刷新委托
         ConcurrentDictionary<string, bool> dic = new ConcurrentDictionary<string, bool>();
@@ -105,7 +104,6 @@ namespace TcpServcerTest
                 }
             catch (Exception ex) { log.Exception(ex); }
             }
-
 
         #region 客户端连接事件
         void server_ClientConnected(object sender, TcpClientConnectedEventArgs e)
@@ -1041,6 +1039,12 @@ namespace TcpServcerTest
                 checkedListBoxControl2.Items[14].CheckState = CheckState.Unchecked;
                 checkedListBoxControl2.Items[15].CheckState = CheckState.Unchecked;
                 }
+            }
+
+        private void btnModeSelect_Click(object sender, EventArgs e)
+            {
+            FrmModeSelectLogin fms = new FrmModeSelectLogin();
+            fms.Show();
             }
         }
 }

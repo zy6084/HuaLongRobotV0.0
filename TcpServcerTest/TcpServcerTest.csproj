@@ -56,6 +56,7 @@
       <HintPath>bin\Debug\Gimela.Net.Sockets.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -79,6 +80,18 @@
     </Compile>
     <Compile Include="FrmManualMode.Designer.cs">
       <DependentUpon>FrmManualMode.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModeSelectLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModeSelectLogin.Designer.cs">
+      <DependentUpon>FrmModeSelectLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmModeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmModeSelect.Designer.cs">
+      <DependentUpon>FrmModeSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="IPConfig.cs" />
     <Compile Include="MouseHook.cs" />
@@ -107,6 +120,12 @@
     <EmbeddedResource Include="FrmManualMode.resx">
       <DependentUpon>FrmManualMode.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmModeSelectLogin.resx">
+      <DependentUpon>FrmModeSelectLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmModeSelect.resx">
+      <DependentUpon>FrmModeSelect.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -125,7 +144,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config">
+    <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
